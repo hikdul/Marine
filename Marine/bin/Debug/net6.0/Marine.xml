@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Marine</name>
+    </assembly>
+    <members>
+        <member name="T:Marine.Migrations.initial">
+            <summary>
+            initial, whit user, identity tables and roles
+            </summary>
+        </member>
+        <member name="M:Marine.Migrations.initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            up
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:Marine.Migrations.initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            down
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+    </members>
+</doc>
