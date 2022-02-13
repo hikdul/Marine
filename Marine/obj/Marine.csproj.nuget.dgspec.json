@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hikdu\\source\\Net\\Marine\\Marine\\Marine.csproj": {}
+    "C:\\Users\\user\\source\\NET\\Marine\\Marine\\Marine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hikdu\\source\\Net\\Marine\\Marine\\Marine.csproj": {
+    "C:\\Users\\user\\source\\NET\\Marine\\Marine\\Marine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hikdu\\source\\Net\\Marine\\Marine\\Marine.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\NET\\Marine\\Marine\\Marine.csproj",
         "projectName": "Marine",
-        "projectPath": "C:\\Users\\hikdu\\source\\Net\\Marine\\Marine\\Marine.csproj",
-        "packagesPath": "C:\\Users\\hikdu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hikdu\\source\\Net\\Marine\\Marine\\obj\\",
+        "projectPath": "C:\\Users\\user\\source\\NET\\Marine\\Marine\\Marine.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\NET\\Marine\\Marine\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\hikdu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +47,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[11.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
             },
             "EPPlus": {
               "target": "Package",
@@ -101,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

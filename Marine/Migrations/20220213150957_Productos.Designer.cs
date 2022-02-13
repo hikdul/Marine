@@ -4,6 +4,7 @@ using Marine.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Marine.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220213150957_Productos")]
+    partial class Productos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +46,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Calibres", (string)null);
+                    b.ToTable("Calibres");
                 });
 
             modelBuilder.Entity("Marine.Entitys.Empaquetado", b =>
@@ -69,7 +71,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Empaquetados", (string)null);
+                    b.ToTable("Empaquetados");
                 });
 
             modelBuilder.Entity("Marine.Entitys.Marisco", b =>
@@ -94,7 +96,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Mariscos", (string)null);
+                    b.ToTable("Mariscos");
                 });
 
             modelBuilder.Entity("Marine.Entitys.Producto", b =>
@@ -130,7 +132,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("TipoProduccionid");
 
-                    b.ToTable("Productos", (string)null);
+                    b.ToTable("Productos");
                 });
 
             modelBuilder.Entity("Marine.Entitys.TipoProduccion", b =>
@@ -155,7 +157,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("TiposProduccion", (string)null);
+                    b.ToTable("TiposProduccion");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

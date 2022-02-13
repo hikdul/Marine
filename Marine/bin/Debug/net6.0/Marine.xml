@@ -4,6 +4,704 @@
         <name>Marine</name>
     </assembly>
     <members>
+        <member name="T:Marine.Controllers.BaseController">
+            <summary>
+            solo es para no repetir tanto codigo
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.BaseController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            constructor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.BaseController.Post``3(``0,System.String)">
+            <summary>
+            para retornar una ruta con todo los elementos de lo recien creado
+            </summary>
+            <typeparam name="TDTO_in"></typeparam>
+            <typeparam name="TEntidad"></typeparam>
+            <typeparam name="TDTO_Out"></typeparam>
+            <param name="_Insenrt"></param>
+            <param name="NombreRuta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.BaseController.Post``3(``0)">
+            <summary>
+            para retornar un objeto con lo recien creado
+            </summary>
+            <typeparam name="TDTO_in"></typeparam>
+            <typeparam name="TEntidad"></typeparam>
+            <typeparam name="TDTO_Out"></typeparam>
+            <param name="_Insenrt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.BaseController.Get``2">
+            <summary>
+            obtiene los datos activos en base de datos
+            </summary>
+            <typeparam name="TEntidad"></typeparam>
+            <typeparam name="TDTO"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.BaseController.GetAll``2">
+            <summary>
+            obtiene los datos activos en base de datos
+            </summary>
+            <typeparam name="TEntidad"></typeparam>
+            <typeparam name="TDTO"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.BaseController.Get``2(System.Int32)">
+            <summary>
+            obtiene un dato por medio de su id
+            </summary>
+            <typeparam name="TEntidad"></typeparam>
+            <typeparam name="TDTO_out"></typeparam>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.BaseController.Put``2(System.Int32,``0)">
+            <summary>
+            update
+            </summary>
+            <typeparam name="TDTO_in"></typeparam>
+            <typeparam name="TEntidad"></typeparam>
+            <param name="id"></param>
+            <param name="insert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.BaseController.Delete``1(System.Int32)">
+            <summary>
+            para "eliminar elementos" de la tabla
+            mas bien pasan al estado de inactivos
+            </summary>
+            <typeparam name="TEntidad"></typeparam>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.Controllers.CalibreController">
+            <summary>
+            para manipular los datos de los calibres
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.CalibreController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.CalibreController.Post(Marine.DTOs.GTipoDTO_in)">
+            <summary>
+            para almacenar un nuevo marisco
+            </summary>
+            <param name="insert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.CalibreController.Get">
+            <summary>
+            obtiene listado de activos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.CalibreController.Get(System.Int32)">
+            <summary>
+            obtiene datos de 1 unico elemento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.CalibreController.Put(System.Int32,Marine.DTOs.GTipoDTO_in)">
+            <summary>
+            edita el elemento
+            </summary>
+            <param name="id"></param>
+            <param name="change"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.CalibreController.Delete(System.Int32)">
+            <summary>
+            elimina el elemento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.Controllers.EmpaquetadoController">
+            <summary>
+            para manipular la data de los empaquetados
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.EmpaquetadoController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.EmpaquetadoController.Post(Marine.DTOs.GTipoDTO_in)">
+            <summary>
+            para almacenar un nuevo marisco
+            </summary>
+            <param name="insert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.EmpaquetadoController.Get">
+            <summary>
+            obtiene listado de activos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.EmpaquetadoController.Get(System.Int32)">
+            <summary>
+            obtiene datos de 1 unico elemento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.EmpaquetadoController.Put(System.Int32,Marine.DTOs.GTipoDTO_in)">
+            <summary>
+            edita el elemento
+            </summary>
+            <param name="id"></param>
+            <param name="change"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.EmpaquetadoController.Delete(System.Int32)">
+            <summary>
+            elimina el elemento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.Controllers.MariscoController">
+            <summary>
+            para controlar los datos de mariscos
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.MariscoController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.MariscoController.Post(Marine.DTOs.GTipoDTO_in)">
+            <summary>
+            para almacenar un nuevo marisco
+            </summary>
+            <param name="insert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.MariscoController.Get">
+            <summary>
+            obtiene listado de activos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.MariscoController.Get(System.Int32)">
+            <summary>
+            obtiene datos de 1 unico elemento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.Controllers.ProductoController">
+            <summary>
+            para manipular nuestros productos
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.ProductoController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.ProductoController.Post(Marine.DTOs.ProductoDTO_in)">
+            <summary>
+            para almacenar un nuevo marisco
+            </summary>
+            <param name="insert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.ProductoController.Get">
+            <summary>
+            obtiene listado de activos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.ProductoController.Get(System.Int32)">
+            <summary>
+            obtiene datos de 1 unico elemento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.ProductoController.Put(System.Int32,Marine.DTOs.ProductoDTO_in)">
+            <summary>
+            actualiza un elemento
+            </summary>
+            <param name="id"></param>
+            <param name="change"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.ProductoController.Delete(System.Int32)">
+            <summary>
+            elimina un elemento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.Controllers.TipoProduccionController">
+            <summary>
+            para manipular datos de tipo de produccion
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.TipoProduccionController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.TipoProduccionController.Post(Marine.DTOs.GTipoDTO_in)">
+            <summary>
+            para almacenar un nuevo marisco
+            </summary>
+            <param name="insert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.TipoProduccionController.Get">
+            <summary>
+            obtiene listado de activos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.TipoProduccionController.Get(System.Int32)">
+            <summary>
+            obtiene datos de 1 unico elemento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.TipoProduccionController.Put(System.Int32,Marine.DTOs.GTipoDTO_in)">
+            <summary>
+            edita el elemento
+            </summary>
+            <param name="id"></param>
+            <param name="change"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.TipoProduccionController.Delete(System.Int32)">
+            <summary>
+            elimina el elemento
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.Data.ApplicationDbContext">
+            <summary>
+            mi contexto de datos
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.Mariscos">
+            <summary>
+            tabla que contiene mis mariscos
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.Calibres">
+            <summary>
+            almacena los calibres de uso de la aplicacion
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.Empaquetados">
+            <summary>
+            almacena el modo de empaquetado de nuestros productos
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.TiposProduccion">
+            <summary>
+            almacena los tipos de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.Productos">
+            <summary>
+            almacena lo productos como una unidad reutilizable
+            </summary>
+        </member>
+        <member name="M:Marine.Data.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            para la gegeracion de datos por defecto
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:Marine.Data.ApplicationDbContext.RolesYSU(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            para crear el listado de roles y un super usuario para iniciar la partida
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Marine.DTOs.GTipoDTO_in">
+            <summary>
+            para ingresar datos a ciertos elementos repetitivos de la base de datos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.GTipoDTO_in.Name">
+            <summary>
+            nombre del marisco
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.GTipoDTO_in.Desc">
+            <summary>
+            descripcion
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.GTipoDTO_out">
+            <summary>
+            tipos en general para mostrar sus datos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.GTipoDTO_out.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.GTipoDTO_out.Name">
+            <summary>
+            nombre del marisco
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.GTipoDTO_out.Desc">
+            <summary>
+            descripcion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.GTipoDTO_out.act">
+            <summary>
+            si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.ProductoDTO_Details">
+            <summary>
+            obtiene un producto con todo sus detalles
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.act">
+            <summary>
+            si esta activo o no en base de datos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.Mariscoid">
+            <summary>
+            Marisco al que pertenece el producto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.Marisco">
+            <summary>
+            prop de nav
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.TipoProduccionid">
+            <summary>
+            tipo de produccion al que se refiere
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.TipoProduccion">
+            <summary>
+            prop de nav
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.Calibreid">
+            <summary>
+            calibre del Tipo de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.Calibre">
+            <summary>
+            prop de nav
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.Empaquetadoid">
+            <summary>
+            Empaquetado del producto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_Details.Empaquetado">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.ProductoDTO_in">
+            <summary>
+            para insertar un nuevo producto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_in.Mariscoid">
+            <summary>
+            Marisco al que pertenece el producto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_in.TipoProduccionid">
+            <summary>
+            tipo de produccion al que se refiere
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_in.Calibreid">
+            <summary>
+            calibre del Tipo de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_in.Empaquetadoid">
+            <summary>
+            Empaquetado del producto
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.ProductoDTO_in.Validate(Marine.Data.ApplicationDbContext)">
+            <summary>
+            para validar si un elemento es viable de crear
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.DTOs.ProductoDTO_out">
+            <summary>
+            para obtener los datos de un producto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_out.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_out.act">
+            <summary>
+            si esta activo o no en base de datos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_out.Marisco">
+            <summary>
+            marisco
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_out.TipoProduccion">
+            <summary>
+            tipo de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_out.Calibre">
+            <summary>
+            calibre
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProductoDTO_out.Empaquetado">
+            <summary>
+            empaquetado
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.Calibre">
+            <summary>
+            para almacenar los datos de un calibre
+            esto son en cierto modo los tamaños de los mariscos
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Calibre.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Calibre.Name">
+            <summary>
+            nombre del marisco
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Calibre.Desc">
+            <summary>
+            descripcion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Calibre.act">
+            <summary>
+            si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.Empaquetado">
+            <summary>
+            definen el modo en que se guardan los productos por paquetes
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Empaquetado.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Empaquetado.Name">
+            <summary>
+            nombre del marisco
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Empaquetado.Desc">
+            <summary>
+            descripcion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Empaquetado.act">
+            <summary>
+            si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.Marisco">
+            <summary>
+            nombre y descripcion del marisco
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Marisco.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Marisco.Name">
+            <summary>
+            nombre del marisco
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Marisco.Desc">
+            <summary>
+            descripcion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Marisco.act">
+            <summary>
+            si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.Producto">
+            <summary>
+            es donde se definen los productos finales
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.act">
+            <summary>
+            si esta activo o no en base de datos
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.Mariscoid">
+            <summary>
+            Marisco al que pertenece el producto
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.Marisco">
+            <summary>
+            prop de nav
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.TipoProduccionid">
+            <summary>
+            tipo de produccion al que se refiere
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.TipoProduccion">
+            <summary>
+            prop de nav
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.Calibreid">
+            <summary>
+            calibre del Tipo de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.Calibre">
+            <summary>
+            prop de nav
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.Empaquetadoid">
+            <summary>
+            Empaquetado del producto
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Producto.Empaquetado">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.TipoProduccion">
+            <summary>
+            define el tipo de produccion
+            es el formato final del producto
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.TipoProduccion.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.TipoProduccion.Name">
+            <summary>
+            nombre del marisco
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.TipoProduccion.Desc">
+            <summary>
+            descripcion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.TipoProduccion.act">
+            <summary>
+            si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.Helpers.AutoMapperProfile">
+            <summary>
+            Para almacenar todos mis mapeos
+            </summary>
+        </member>
+        <member name="M:Marine.Helpers.AutoMapperProfile.#ctor">
+            <summary>
+            desde aca ocurren los mapeos
+            </summary>
+        </member>
+        <member name="T:Marine.Helpers.Iid">
+            <summary>
+            para mantener aquellas clases que tienen este par de elementos1
+            </summary>
+        </member>
+        <member name="P:Marine.Helpers.Iid.id">
+            <summary>
+            identificador
+            </summary>
+        </member>
+        <member name="P:Marine.Helpers.Iid.act">
+            <summary>
+            si esta activo o no en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.Helpers.ITipo">
+            <summary>
+            para aquellas clases que tienden a ser de tipologia
+            </summary>
+        </member>
+        <member name="P:Marine.Helpers.ITipo.Name">
+            <summary>
+            nombre del elemento
+            </summary>
+        </member>
+        <member name="P:Marine.Helpers.ITipo.Desc">
+            <summary>
+            descripcion del elemento
+            </summary>
+        </member>
         <member name="T:Marine.Migrations.initial">
             <summary>
             initial, whit user, identity tables and roles
@@ -16,6 +714,23 @@
             <param name="migrationBuilder"></param>
         </member>
         <member name="M:Marine.Migrations.initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            down
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="T:Marine.Migrations.Productos">
+            <summary>
+            migracion para la creacion de productos
+            </summary>
+        </member>
+        <member name="M:Marine.Migrations.Productos.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            up
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:Marine.Migrations.Productos.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <summary>
             down
             </summary>

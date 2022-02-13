@@ -97,8 +97,8 @@ builder.Services.AddSwaggerGen(c =>
                 });
 });
 
-
-
+//add automapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 //configurando mi cookies para intentar redirigir a otro lado 
