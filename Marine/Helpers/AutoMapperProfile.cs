@@ -19,6 +19,7 @@ namespace Marine.Helpers
             TipoProduccionsMap();
             EmpaquetadosMap();
             ProductoMap();
+            MateriaPrimaMap();
         }
 
 
@@ -112,6 +113,27 @@ namespace Marine.Helpers
 
             
 
+        }
+
+        #endregion
+
+        #region MateriaPrima
+
+        private void MateriaPrimaMap()
+        {
+            CreateMap<MateriaPrima, MateriaPrimaDTO>().ReverseMap();
+
+            CreateMap<MateriaPrimaDTO_in, MateriaPrima>()
+                .ForMember(x => x.Marisco, opt => opt.Ignore());
+
+            CreateMap<MateriaPrima, MateriaPrimaDTO_out>()
+                .ForMember(x => x.Marisco, opt => opt.MapFrom(MateriaPrimaOnlyText));
+
+        }
+
+        private string MateriaPrimaOnlyText(MateriaPrima ent, MateriaPrimaDTO_out dto)
+        {
+            return ent.Marisco.Name;
         }
 
         #endregion

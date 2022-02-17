@@ -207,6 +207,45 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Marine.Controllers.MateriaPrimaController">
+            <summary>
+            Materia Prima Controller
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.MateriaPrimaController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.MateriaPrimaController.Add(Marine.DTOs.MateriaPrimaDTO_in)">
+            <summary>
+            para agregar datos a la materia prima
+            </summary>
+            <param name="ins"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.MateriaPrimaController.Substract(Marine.DTOs.MateriaPrimaDTO_in)">
+            <summary>
+            para agregar datos a la materia prima
+            </summary>
+            <param name="ins"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.MateriaPrimaController.Get">
+            <summary>
+            obtiene todo el listado de materias primas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.MateriaPrimaController.Get(System.Int32)">
+            <summary>
+            obtiene los datos de 1 elemento en especifico
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Controllers.ProductoController">
             <summary>
             para manipular nuestros productos
@@ -331,6 +370,16 @@
             almacena lo productos como una unidad reutilizable
             </summary>
         </member>
+        <member name="P:Marine.Data.ApplicationDbContext.MateriasPrimas">
+            <summary>
+            Para tener el inventario de materia prima
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.Almacen">
+            <summary>
+            de lo que hay en este momento en almacen
+            </summary>
+        </member>
         <member name="M:Marine.Data.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             para la gegeracion de datos por defecto
@@ -342,6 +391,71 @@
             para crear el listado de roles y un super usuario para iniciar la partida
             </summary>
             <param name="builder"></param>
+        </member>
+        <member name="T:Marine.DTOs.AlmacenDTO_in">
+            <summary>
+            Almacen dto in
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_in.Cantidad">
+            <summary>
+            Cantidad de kg
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_in.Marisco">
+            <summary>
+            Marisco
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_in.TipoProduccion">
+            <summary>
+            Tipo de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_in.Calibre">
+            <summary>
+            Calibre
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_in.Empaquetado">
+            <summary>
+            Empaquetado
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.AlmacenDTO_out">
+            <summary>
+            para la salida de datos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_out.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_out.Cantidad">
+            <summary>
+            Cantidad en almacen
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_out.Marisco">
+            <summary>
+            Marisco
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_out.TipoProduccion">
+            <summary>
+            Tipo de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_out.Calibre">
+            <summary>
+            Calibre
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO_out.Empaquetado">
+            <summary>
+            Empaquetado
+            </summary>
         </member>
         <member name="T:Marine.DTOs.GTipoDTO_in">
             <summary>
@@ -381,6 +495,77 @@
         <member name="P:Marine.DTOs.GTipoDTO_out.act">
             <summary>
             si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.MateriaPrimaDTO">
+            <summary>
+            una copia de lo que se puede entregar de este elemento en la entidad
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.MateriaPrimaDTO.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.MateriaPrimaDTO.Mariscoid">
+            <summary>
+            marisco al que pertenece
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.MateriaPrimaDTO.Marisco">
+            <summary>
+            prop de nav
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.MateriaPrimaDTO.Cantidad">
+            <summary>
+            cantidad del marisco
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.MateriaPrimaDTO_in.Mariscoid">
+            <summary>
+            marisco al que pertenece
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.MateriaPrimaDTO_in.Cantidad">
+            <summary>
+            cantidad a agregar o restar
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.MateriaPrimaDTO_in.Add(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            para agregar mas datos a un marisco
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.DTOs.MateriaPrimaDTO_in.Substract(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            para agregar mas datos a un marisco
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.DTOs.MateriaPrimaDTO_out">
+            <summary>
+            datos que se muestran sobre la materia prima
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.MateriaPrimaDTO_out.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.MateriaPrimaDTO_out.Marisco">
+            <summary>
+            Marisco
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.MateriaPrimaDTO_out.Cantidad">
+            <summary>
+            Cantidad
             </summary>
         </member>
         <member name="T:Marine.DTOs.ProductoDTO_Details">
@@ -505,6 +690,31 @@
             empaquetado
             </summary>
         </member>
+        <member name="T:Marine.Entitys.Almacen">
+            <summary>
+            se guardar los productos producidos
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Almacen.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Almacen.Cantidad">
+            <summary>
+            Cantidad en el almacen
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Almacen.Productoid">
+            <summary>
+            Producto
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Almacen.Producto">
+            <summary>
+            prop nav
+            </summary>
+        </member>
         <member name="T:Marine.Entitys.Calibre">
             <summary>
             para almacenar los datos de un calibre
@@ -579,6 +789,31 @@
         <member name="P:Marine.Entitys.Marisco.act">
             <summary>
             si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.MateriaPrima">
+            <summary>
+            para almacenar la materia prima
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.MateriaPrima.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.MateriaPrima.Mariscoid">
+            <summary>
+            marisco al que pertenece
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.MateriaPrima.Marisco">
+            <summary>
+            prop de nav
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.MateriaPrima.Cantidad">
+            <summary>
+            cantidad del marisco
             </summary>
         </member>
         <member name="T:Marine.Entitys.Producto">
@@ -731,6 +966,23 @@
             <param name="migrationBuilder"></param>
         </member>
         <member name="M:Marine.Migrations.Productos.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            down
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="T:Marine.Migrations.MateriasPrimas">
+            <summary>
+            para generar tabla de materias primas
+            </summary>
+        </member>
+        <member name="M:Marine.Migrations.MateriasPrimas.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            up
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:Marine.Migrations.MateriasPrimas.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <summary>
             down
             </summary>
