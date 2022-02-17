@@ -52,9 +52,18 @@ namespace Marine.Data
         /// </summary>
         public DbSet<Producto> Productos { get; set; }
 
-        // ## == otra cosa
+        // ## == Stock
         // ## =====================================
 
+        /// <summary>
+        /// Para tener el inventario de materia prima
+        /// </summary>
+        public DbSet<MateriaPrima> MateriasPrimas { get; set; }
+
+        /// <summary>
+        /// de lo que hay en este momento en almacen
+        /// </summary>
+        public DbSet<Almacen> Almacen { get; set; }
 
         #endregion
 
