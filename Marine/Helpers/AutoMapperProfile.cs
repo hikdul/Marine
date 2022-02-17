@@ -20,6 +20,7 @@ namespace Marine.Helpers
             EmpaquetadosMap();
             ProductoMap();
             MateriaPrimaMap();
+            AlmacenMap();
         }
 
 
@@ -135,6 +136,45 @@ namespace Marine.Helpers
         {
             return ent.Marisco.Name;
         }
+
+        #endregion
+
+        #region Almacen
+
+        private void AlmacenMap()
+        {
+
+            CreateMap<Almacen, AlmacenDTO>().ReverseMap();
+            CreateMap<Almacen, AlmacenDTO_out>()
+                .ForMember(x => x.Marisco, opt => opt.MapFrom(MariscoOutAlmacen))
+                .ForMember(x => x.Calibre, opt => opt.MapFrom(CalibreOutAlmacen))
+                .ForMember(x => x.TipoProduccion, opt => opt.MapFrom(TipoProdOutAlmacen))
+                .ForMember(x => x.Empaquetado, opt => opt.MapFrom(EmpaquetadoOutAlmacen));
+
+
+
+        }
+
+        private string CalibreOutAlmacen(Almacen ent, AlmacenDTO_out dto)
+        {
+            return ent.Producto.Calibre.Name;
+        }
+
+        private string MariscoOutAlmacen(Almacen ent, AlmacenDTO_out dto)
+        {
+            return ent.Producto.Marisco.Name;
+        }
+
+        private string TipoProdOutAlmacen(Almacen ent, AlmacenDTO_out dto)
+        {
+            return ent.Producto.TipoProduccion.Name;
+        }
+
+        private string EmpaquetadoOutAlmacen(Almacen ent, AlmacenDTO_out dto)
+        {
+            return ent.Producto.Empaquetado.Name;
+        }
+
 
         #endregion
 

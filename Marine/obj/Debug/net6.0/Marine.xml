@@ -4,6 +4,46 @@
         <name>Marine</name>
     </assembly>
     <members>
+        <member name="T:Marine.Controllers.AlmacenController">
+            <summary>
+            para mantener los datos del almacen
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.AlmacenController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.AlmacenController.Add(Marine.DTOs.AlmacenDTO_in)">
+            <summary>
+            para adicionar elementos
+            </summary>
+            <param name="ins"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.AlmacenController.Substract(Marine.DTOs.AlmacenDTO_in)">
+            <summary>
+            para quitar elementos
+            </summary>
+            <param name="ins"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.AlmacenController.Get">
+            <summary>
+            para obtener un listado de todos los elementos en almacen
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.AlmacenController.Get(System.Int32)">
+            <summary>
+            para obtener los datos en detalles de un elemento en particular
+            por medio de su id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Controllers.BaseController">
             <summary>
             solo es para no repetir tanto codigo
@@ -392,6 +432,31 @@
             </summary>
             <param name="builder"></param>
         </member>
+        <member name="T:Marine.DTOs.AlmacenDTO">
+            <summary>
+            copia del original
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO.Cantidad">
+            <summary>
+            Cantidad en el almacen
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO.Productoid">
+            <summary>
+            Producto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.AlmacenDTO.Producto">
+            <summary>
+            prop nav
+            </summary>
+        </member>
         <member name="T:Marine.DTOs.AlmacenDTO_in">
             <summary>
             Almacen dto in
@@ -421,6 +486,22 @@
             <summary>
             Empaquetado
             </summary>
+        </member>
+        <member name="M:Marine.DTOs.AlmacenDTO_in.Add(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            para agregar valores
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.DTOs.AlmacenDTO_in.Substract(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            resta
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+            <returns></returns>
         </member>
         <member name="T:Marine.DTOs.AlmacenDTO_out">
             <summary>
@@ -983,6 +1064,23 @@
             <param name="migrationBuilder"></param>
         </member>
         <member name="M:Marine.Migrations.MateriasPrimas.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            down
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="T:Marine.Migrations.almacen">
+            <summary>
+            para agregar la tabla de almacen
+            </summary>
+        </member>
+        <member name="M:Marine.Migrations.almacen.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            up
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:Marine.Migrations.almacen.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <summary>
             down
             </summary>

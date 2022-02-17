@@ -60,20 +60,51 @@ namespace Marine.DTOs
                     .Include(a => a.Producto).ThenInclude(x => x.Empaquetado)
                     .Where(x =>
                 x.Producto.Mariscoid == this.Marisco
-                && x.Producto.Calibreid == this.Calibre
                 && x.Producto.TipoProduccionid == this.TipoProduccion
+                && x.Producto.Calibreid == this.Calibre
                 && x.Producto.Empaquetadoid == this.Empaquetado
                 ).FirstOrDefaultAsync();
 
-                if(ent != null && ent.id < 1)
+                if(ent != null && ent.id > 0)
                 {
                     ent.Cantidad += this.Cantidad;
                     await context.SaveChangesAsync();
                     return mapper.Map<AlmacenDTO_out>(ent);
                 }
 
-                ent = mapper.Map<Almacen>(this);
+                var producto = await context.Productos.Where(x =>
+                x.Calibreid == this.Calibre
+                && x.Mariscoid == this.Marisco
+                && x.TipoProduccionid == this.TipoProduccion
+                && x.Empaquetadoid == this.Empaquetado
+                ).FirstOrDefaultAsync();
+
+              
+
+                if(producto == null || producto.id < 1)
+                {
+                    producto = new() { 
+                        act = true,
+                        Calibreid = this.Calibre,
+                        Empaquetadoid = this.Empaquetado,
+                        Mariscoid = this.Marisco,
+                        TipoProduccionid = this.TipoProduccion,
+                        
+                    };
+
+                    context.Add(producto);
+                    await context.SaveChangesAsync();
+
+                }
+
+                ent = new()
+                {
+                    Productoid = producto.id,
+                    Cantidad = this.Cantidad
+                };
+
                 context.Add(ent);
+                await context.SaveChangesAsync();
 
                 ent = await context.Almacen
                     .Include(a => a.Producto).ThenInclude(x => x.Marisco)
@@ -82,7 +113,7 @@ namespace Marine.DTOs
                     .Include(a => a.Producto).ThenInclude(x => x.Empaquetado)
                     .Where(x => x.id == ent.id)
                     .FirstOrDefaultAsync();
-
+                
                 return mapper.Map<AlmacenDTO_out>(ent);
 
             }
@@ -125,16 +156,49 @@ namespace Marine.DTOs
                 && x.Producto.Empaquetadoid == this.Empaquetado
                 ).FirstOrDefaultAsync();
 
-                if (ent != null && ent.id < 1)
+                if (ent != null && ent.id > 0)
                 {
                     ent.Cantidad -= this.Cantidad;
+                    if (ent.Cantidad < 0)
+                        ent.Cantidad = 0;
                     await context.SaveChangesAsync();
                     return mapper.Map<AlmacenDTO_out>(ent);
                 }
 
-                ent = mapper.Map<Almacen>(this);
-                ent.Cantidad = 0;
+                var producto = await context.Productos.Where(x =>
+                x.Calibreid == this.Calibre
+                && x.Mariscoid == this.Marisco
+                && x.TipoProduccionid == this.TipoProduccion
+                && x.Empaquetadoid == this.Empaquetado
+                ).FirstOrDefaultAsync();
+
+
+
+                if (producto == null || producto.id < 1)
+                {
+                    producto = new()
+                    {
+                        act = true,
+                        Calibreid = this.Calibre,
+                        Empaquetadoid = this.Empaquetado,
+                        Mariscoid = this.Marisco,
+                        TipoProduccionid = this.TipoProduccion,
+
+                    };
+
+                    context.Add(producto);
+                    await context.SaveChangesAsync();
+
+                }
+
+                ent = new()
+                {
+                    Productoid = producto.id,
+                    Cantidad = 0
+                };
+
                 context.Add(ent);
+                await context.SaveChangesAsync();
 
                 ent = await context.Almacen
                     .Include(a => a.Producto).ThenInclude(x => x.Marisco)
