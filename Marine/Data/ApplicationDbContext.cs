@@ -25,6 +25,15 @@ namespace Marine.Data
 
         #region Tablas de negocion
 
+
+        // ## == Sobre la construccion de productos
+        // ## =====================================
+
+        /// <summary>
+        /// donde se almacena la data sensible del usuario
+        /// </summary>
+        public DbSet<Usuarios> AspNetUsuario { get; set; }
+
         // ## == Sobre la construccion de productos
         // ## =====================================
 

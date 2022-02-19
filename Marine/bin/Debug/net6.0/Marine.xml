@@ -385,6 +385,11 @@
             mi contexto de datos
             </summary>
         </member>
+        <member name="P:Marine.Data.ApplicationDbContext.AspNetUsuario">
+            <summary>
+            donde se almacena la data sensible del usuario
+            </summary>
+        </member>
         <member name="P:Marine.Data.ApplicationDbContext.Mariscos">
             <summary>
             tabla que contiene mis mariscos
@@ -976,6 +981,55 @@
         <member name="P:Marine.Entitys.TipoProduccion.act">
             <summary>
             si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.Usuarios">
+            <summary>
+            datos de los usuarios del sistema
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Usuarios.id">
+            <summary>
+            id 
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Usuarios.Nombre">
+            <summary>
+            nombre del usuario
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Usuarios.rut">
+            <summary>
+            rut
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Usuarios.Email">
+            <summary>
+            Email de ingreso al sistema
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Usuarios.Telefono">
+            <summary>
+            telefono
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Usuarios.User">
+            <summary>
+            identity user
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Usuarios.Userid">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Usuarios.Rol">
+            <summary>
+            para almacenar los roles
+            => AdmoSistema ==> Administrador del sistema
+            => Gerenteplanta ==> Genente de planta
+            => Superv ==> Supervisor de Planta
+            => Cliente ==> Cliente`
             </summary>
         </member>
         <member name="T:Marine.Helpers.AutoMapperProfile">
