@@ -36,8 +36,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
-
         #region Post
         /// <summary>
         /// para almacenar un nuevo marisco
@@ -82,7 +80,6 @@ namespace Marine.Controllers
         }
 
         #endregion
-
 
         #region Get
 
@@ -149,8 +146,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
-
         #region Put
         /// <summary>
         /// actualiza un elemento
@@ -177,7 +172,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
         #region Delete
         /// <summary>
         /// elimina un elemento
@@ -200,11 +194,6 @@ namespace Marine.Controllers
 
 
         #endregion
-
-
-
-        
-
 
     }
 }

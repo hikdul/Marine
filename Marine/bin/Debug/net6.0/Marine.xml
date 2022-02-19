@@ -215,6 +215,24 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Marine.Controllers.HistarialMateriaPrimaController">
+            <summary>
+            para ver el historial de matera prima
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.HistarialMateriaPrimaController.#ctor(Marine.Data.ApplicationDbContext)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Marine.Controllers.HistarialMateriaPrimaController.Historial(Marine.DTOs.Periodo)">
+            <summary>
+            para ver el esturial en un periodo predeterminado
+            </summary>
+            <param name="periodo"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Controllers.MariscoController">
             <summary>
             para controlar los datos de mariscos
@@ -418,6 +436,12 @@
         <member name="P:Marine.Data.ApplicationDbContext.MateriasPrimas">
             <summary>
             Para tener el inventario de materia prima
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.HistorialMateriaPrima">
+            <summary>
+            para llevar el historial de materio prima
+            ingreso y egresos
             </summary>
         </member>
         <member name="P:Marine.Data.ApplicationDbContext.Almacen">
@@ -654,6 +678,39 @@
             Cantidad
             </summary>
         </member>
+        <member name="T:Marine.DTOs.Periodo">
+            <summary>
+            periodo para usos multiples
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.Periodo.Inicio">
+            <summary>
+            inicio del periodo
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.Periodo.Fin">
+            <summary>
+            fin
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.Periodo.#ctor">
+            <summary>
+            empty
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.Periodo.#ctor(System.DateTime,System.DateTime)">
+            <summary>
+            para ingresar los datos de un periodo
+            </summary>
+            <param name="Inicio"></param>
+            <param name="Fin"></param>
+        </member>
+        <member name="M:Marine.DTOs.Periodo.Validate">
+            <summary>
+            validacion
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Marine.DTOs.ProductoDTO_Details">
             <summary>
             obtiene un producto con todo sus detalles
@@ -852,6 +909,67 @@
             si esta o no activo en base de datos
             </summary>
         </member>
+        <member name="T:Marine.Entitys.HistorialMateriaPrima">
+            <summary>
+            para llevar el historial de lo que ingresa al almacen de materia prima
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.HistorialMateriaPrima.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.HistorialMateriaPrima.Mariscoid">
+            <summary>
+            marisco que ingresa
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.HistorialMateriaPrima.Marisco">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.HistorialMateriaPrima.Cantidad">
+            <summary>
+            Cantidad que ha ingresado
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.HistorialMateriaPrima.Fecha">
+            <summary>
+            fecha en la que ingreso
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.HistorialMateriaPrima.Usuarioid">
+            <summary>
+            usuario que realizo el ingreso
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.HistorialMateriaPrima.Usuario">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.HistorialMateriaPrima.Ingreso">
+            <summary>
+            afirma si es un ingreso o egreso
+            </summary>
+        </member>
+        <member name="M:Marine.Entitys.HistorialMateriaPrima.#ctor(System.Int32,System.Double,System.Boolean)">
+            <summary>
+            ctor
+            </summary>
+            <param name="Mariscoid"></param>
+            <param name="Cantidad"></param>
+            <param name="Ingreso"></param>
+        </member>
+        <member name="M:Marine.Entitys.HistorialMateriaPrima.Add(Marine.Data.ApplicationDbContext,System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            para agregar contenido a la tabla
+            </summary>
+            <param name="context"></param>
+            <param name="User"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Entitys.Marisco">
             <summary>
             nombre y descripcion del marisco
@@ -1032,6 +1150,57 @@
             => Cliente ==> Cliente`
             </summary>
         </member>
+        <member name="M:Marine.Entitys.Usuarios.#ctor">
+            <summary>
+            empty
+            </summary>
+        </member>
+        <member name="M:Marine.Entitys.Usuarios.Exits(Marine.Data.ApplicationDbContext,Microsoft.AspNetCore.Identity.UserManager{Microsoft.AspNetCore.Identity.IdentityUser})">
+            <summary>
+            verifica si el usuario existe
+            </summary>
+            <param name="contex"></param>
+            <param name="userManager"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Entitys.Usuarios.MyRol(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            para generar el rol de ingreso en base al generado en Identity
+            3 => AdmoSistema ==> Administrador del sistema
+            2 => Gerenteplanta ==> Genente de planta
+            1 => Superv ==> Supervisor de Planta
+            0 => Cliente ==> Cliente`
+            </summary>
+            <param name="User"></param>
+        </member>
+        <member name="M:Marine.Entitys.Usuarios.MyRol(System.Int32)">
+            <summary>
+            Para generarlo en base a un nivel
+            </summary>
+            <param name="lvl"></param>
+        </member>
+        <member name="M:Marine.Entitys.Usuarios.RolView(System.Int32)">
+            <summary>
+            para obtener el select de roles
+            </summary>
+            <param name="rol"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Entitys.Usuarios.MyRolIdentity(System.Int32)">
+            <summary>
+            retorna el valor del rol en identity deacuerdo al nivel
+            </summary>
+            <param name="lvl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Entitys.Usuarios.GetByEmail(System.String,Marine.Data.ApplicationDbContext)">
+            <summary>
+            para obtener los datos de un usuaro por su Email
+            </summary>
+            <param name="Email"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Helpers.AutoMapperProfile">
             <summary>
             Para almacenar todos mis mapeos
@@ -1135,6 +1304,40 @@
             <param name="migrationBuilder"></param>
         </member>
         <member name="M:Marine.Migrations.almacen.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            down
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="T:Marine.Migrations.Usuarios">
+            <summary>
+            para generar los datos de usuario
+            </summary>
+        </member>
+        <member name="M:Marine.Migrations.Usuarios.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            up
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:Marine.Migrations.Usuarios.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            down
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="T:Marine.Migrations.HSMateriaPrima">
+            <summary>
+            para ingresar la tablo de hs materia prima
+            </summary>
+        </member>
+        <member name="M:Marine.Migrations.HSMateriaPrima.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            up
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:Marine.Migrations.HSMateriaPrima.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <summary>
             down
             </summary>

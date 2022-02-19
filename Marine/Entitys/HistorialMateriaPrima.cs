@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Marine.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace Marine.Entitys
 {
@@ -7,6 +8,7 @@ namespace Marine.Entitys
     /// </summary>
     public class HistorialMateriaPrima
     {
+        #region props
 
         /// <summary>
         /// id
@@ -43,6 +45,57 @@ namespace Marine.Entitys
         /// afirma si es un ingreso o egreso
         /// </summary>
         public bool Ingreso { get; set; }
+
+        #endregion
+
+
+        #region ctor
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="Mariscoid"></param>
+        /// <param name="Cantidad"></param>
+        /// <param name="Ingreso"></param>
+        public HistorialMateriaPrima(int Mariscoid, double Cantidad, bool Ingreso)
+        {
+            this.Mariscoid = Mariscoid;
+            this.Cantidad = Cantidad;
+            this.Fecha = DateTime.Now;
+            this.Ingreso = Ingreso;
+            this.Marisco = new();
+            this.Usuario = new();
+
+        }
+        
+
+
+        #endregion
+
+
+        #region agregar
+        /// <summary>
+        /// para agregar contenido a la tabla
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="User"></param>
+        /// <returns></returns>
+        public async Task Add(ApplicationDbContext context, System.Security.Claims.ClaimsPrincipal User)
+        {
+            var us = await Usuarios.GetByEmail(User.Identity.Name, context);
+            if (us == null)
+                return;
+
+            this.Usuario = us;
+            this.Usuarioid = us.id;
+
+            context.Add(this);
+            await context.SaveChangesAsync();
+
+        }
+
+
+        #endregion
+
 
     }
 }

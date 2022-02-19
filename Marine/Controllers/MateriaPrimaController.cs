@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Marine.Data;
 using Marine.DTOs;
+using Marine.Entitys;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -33,8 +34,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
-
         #region add
         /// <summary>
         /// para agregar datos a la materia prima
@@ -49,7 +48,8 @@ namespace Marine.Controllers
             {
 
                 var resp = await ins.Add(context,mapper);
-                
+                HistorialMateriaPrima hs = new(ins.Mariscoid, ins.Cantidad, true);
+                await hs.Add(context, User);
 
                 if(resp != null && resp.id > 0)
                     return Ok(resp);
@@ -81,6 +81,10 @@ namespace Marine.Controllers
             {
 
                 var resp = await ins.Substract(context, mapper);
+
+                HistorialMateriaPrima hs = new(ins.Mariscoid, ins.Cantidad, false);
+                await hs.Add(context, User);
+
                 if (resp != null && resp.id > 0)
                     return Ok(resp);
 
@@ -97,8 +101,6 @@ namespace Marine.Controllers
 
 
         #endregion
-
-
 
         #region Get
         /// <summary>
@@ -146,9 +148,6 @@ namespace Marine.Controllers
 
 
         #endregion
-
-
-
 
     }
 }

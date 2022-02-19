@@ -37,8 +37,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
-
         #region add
 
         /// <summary>
@@ -69,7 +67,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
         #region  substract
 
         /// <summary>
@@ -93,8 +90,6 @@ namespace Marine.Controllers
         }
 
         #endregion
-
-
 
         #region Get
 
@@ -158,7 +153,6 @@ namespace Marine.Controllers
 
 
         #endregion
-
 
     }
 }

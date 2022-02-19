@@ -38,7 +38,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
         #region Post
         /// <summary>
         /// para almacenar un nuevo marisco
@@ -63,7 +62,6 @@ namespace Marine.Controllers
         }
 
         #endregion
-
 
         #region Get
 
@@ -112,8 +110,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
-
         #region Put
 
         [HttpPut("{id:int}")]
@@ -131,7 +127,6 @@ namespace Marine.Controllers
         }
 
         #endregion
-
 
         #region Delete
 
@@ -151,7 +146,6 @@ namespace Marine.Controllers
 
 
         #endregion
-
 
     }
 

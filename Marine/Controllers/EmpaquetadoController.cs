@@ -18,7 +18,6 @@ namespace Marine.Controllers
     public class EmpaquetadoController : BaseController
     {
 
-
         #region ctor
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
@@ -36,7 +35,6 @@ namespace Marine.Controllers
 
 
         #endregion
-
 
         #region Post
         /// <summary>
@@ -62,7 +60,6 @@ namespace Marine.Controllers
         }
 
         #endregion
-
 
         #region Get
 
@@ -111,8 +108,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
-
         #region Put
         /// <summary>
         /// edita el elemento
@@ -136,7 +131,6 @@ namespace Marine.Controllers
 
         #endregion
 
-
         #region Delete
         /// <summary>
         /// elimina el elemento
@@ -159,10 +153,5 @@ namespace Marine.Controllers
 
 
         #endregion
-
-
-
-
-
     }
 }
