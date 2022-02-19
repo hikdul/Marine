@@ -174,5 +174,31 @@ namespace Marine.Entitys
 
         #endregion
 
+        #region obtener usuarios
+
+        /// <summary>
+        /// para obtener los datos de un usuaro por su Email
+        /// </summary>
+        /// <param name="Email"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static async Task<Usuarios> GetByEmail(string Email, ApplicationDbContext context)
+        {
+            Usuarios ret = new();
+            try
+            {
+                ret = await context.AspNetUsuario.Where(x => x.Email == Email).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+            }
+            return ret;
+        }
+      
+
+        #endregion
+
+
     }
 }

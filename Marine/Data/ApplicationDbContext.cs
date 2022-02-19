@@ -68,6 +68,11 @@ namespace Marine.Data
         /// Para tener el inventario de materia prima
         /// </summary>
         public DbSet<MateriaPrima> MateriasPrimas { get; set; }
+        /// <summary>
+        /// para llevar el historial de materio prima
+        /// ingreso y egresos
+        /// </summary>
+        public DbSet<HistorialMateriaPrima> HistorialMateriaPrima { get; set; }
 
         /// <summary>
         /// de lo que hay en este momento en almacen

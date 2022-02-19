@@ -3,6 +3,8 @@ using Marine.Data;
 using Marine.DTOs;
 using Marine.Entitys;
 using Marine.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +15,8 @@ namespace Marine.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     public class MariscoController : BaseController
     {
 
