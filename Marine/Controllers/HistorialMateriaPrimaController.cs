@@ -1,5 +1,8 @@
-﻿using Marine.Data;
+﻿using AutoMapper;
+using Marine.Data;
 using Marine.DTOs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,19 +14,24 @@ namespace Marine.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class HistarialMateriaPrimaController : ControllerBase
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public class HistorialMateriaPrimaController : ControllerBase
     {
 
         #region ctor
 
         private readonly ApplicationDbContext context;
+        private readonly IMapper mapper;
+
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="context"></param>
-        public HistarialMateriaPrimaController(ApplicationDbContext context)
+        /// <param name="mapper"></param>
+        public HistorialMateriaPrimaController(ApplicationDbContext context,IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
         }
 
 
@@ -41,16 +49,18 @@ namespace Marine.Controllers
         /// <param name="periodo"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult> Historial(Periodo periodo)
+        public async Task<ActionResult> Historial([FromBody]Periodo periodo)
         {
             try
             {
 
                 var hs = await context
                     .HistorialMateriaPrima
-                    .Where(x => x.Fecha >= periodo.Inicio && x.Fecha <= periodo.Fin)
+                    .Include(x => x.Usuario)
+                    .Include(x => x.Marisco)
+                    .Where(x => x.Fecha >= periodo.Inicio.AddDays(-1) && x.Fecha <= periodo.Fin.AddDays(1))
                     .ToListAsync();
-                return Ok(hs);
+                return Ok(mapper.Map<List<HistorialMateriaPrimaDTO_out>>(hs));
 
             }
             catch (Exception ex)

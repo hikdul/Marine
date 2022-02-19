@@ -62,8 +62,6 @@ namespace Marine.Entitys
             this.Cantidad = Cantidad;
             this.Fecha = DateTime.Now;
             this.Ingreso = Ingreso;
-            this.Marisco = new();
-            this.Usuario = new();
 
         }
         
@@ -81,16 +79,21 @@ namespace Marine.Entitys
         /// <returns></returns>
         public async Task Add(ApplicationDbContext context, System.Security.Claims.ClaimsPrincipal User)
         {
-            var us = await Usuarios.GetByEmail(User.Identity.Name, context);
-            if (us == null)
-                return;
+            try
+            {
+                var us = await Usuarios.GetByEmail(User.Identity.Name, context);
+                if (us == null)
+                    return;
 
-            this.Usuario = us;
-            this.Usuarioid = us.id;
-
-            context.Add(this);
-            await context.SaveChangesAsync();
-
+                //this.Usuario = null;
+                this.Usuarioid = us.id;
+               
+                context.Add(this);
+                await context.SaveChangesAsync();
+            }catch(Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+            }
         }
 
 

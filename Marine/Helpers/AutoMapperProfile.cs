@@ -21,6 +21,7 @@ namespace Marine.Helpers
             ProductoMap();
             MateriaPrimaMap();
             AlmacenMap();
+            HsMateriaPrimaMap();
         }
 
 
@@ -175,6 +176,33 @@ namespace Marine.Helpers
             return ent.Producto.Empaquetado.Name;
         }
 
+
+        #endregion
+
+        #region Historial Materia Prima
+
+        private void HsMateriaPrimaMap()
+        {
+
+            CreateMap<HistorialMateriaPrima, HistorialMateriaPrimaDTO_out>()
+                .ForMember(x => x.Marisco, opt => opt.MapFrom(MariscoEnHsMP))
+                .ForMember(x => x.NombreQuienRegistro, opt => opt.MapFrom(NombreEnHSMP))
+                .ForMember(x => x.rutQuienRegistro, opt => opt.MapFrom(RutEnHSMP));
+        }
+        
+        private string MariscoEnHsMP(HistorialMateriaPrima ent, HistorialMateriaPrimaDTO_out dto)
+        {
+            return ent == null ? "" : ent.Marisco.Name;
+        }
+
+        private string NombreEnHSMP(HistorialMateriaPrima ent, HistorialMateriaPrimaDTO_out dto)
+        {
+            return ent == null ? "" : ent.Usuario.Nombre;
+        }
+        private string RutEnHSMP(HistorialMateriaPrima ent, HistorialMateriaPrimaDTO_out dto)
+        {
+            return ent == null ? "" : ent.Usuario.rut;
+        }
 
         #endregion
 

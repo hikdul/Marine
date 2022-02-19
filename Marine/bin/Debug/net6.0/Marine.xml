@@ -4,6 +4,65 @@
         <name>Marine</name>
     </assembly>
     <members>
+        <member name="T:Marine.Auth.CuentasController">
+            <summary>
+            controlador para manipular las cuentas
+            </summary>
+        </member>
+        <member name="M:Marine.Auth.CuentasController.#ctor(Marine.Data.ApplicationDbContext,Microsoft.AspNetCore.Identity.UserManager{Microsoft.AspNetCore.Identity.IdentityUser},Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Identity.SignInManager{Microsoft.AspNetCore.Identity.IdentityUser})">
+            <summary>
+            ctor
+            </summary>
+            <param name="_context"></param>
+            <param name="_UserManager"></param>
+            <param name="configuration"></param>
+            <param name="_SignInManager"></param>
+        </member>
+        <member name="M:Marine.Auth.CuentasController.Login(Marine.Auth.UserInfo)">
+            <summary>
+            para obtener la llave y acceder al sistema
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Auth.CuentasController.ConstruirToken(Marine.Auth.UserInfo,System.Collections.Generic.IList{System.String})">
+            <summary>
+            para canstruir un token con los datos de login
+            </summary>
+            <param name="userInfo"></param>
+            <param name="roles"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.Auth.UserInfo">
+            <summary>
+            para logearnos
+            </summary>
+        </member>
+        <member name="P:Marine.Auth.UserInfo.Email">
+            <summary>
+            email
+            </summary>
+        </member>
+        <member name="P:Marine.Auth.UserInfo.Password">
+            <summary>
+            contraseña
+            </summary>
+        </member>
+        <member name="T:Marine.Auth.UserToken">
+            <summary>
+            token de usuario dentro de la aplicacion
+            </summary>
+        </member>
+        <member name="P:Marine.Auth.UserToken.Token">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="P:Marine.Auth.UserToken.Expiracion">
+            <summary>
+            fecha de expiracion
+            </summary>
+        </member>
         <member name="T:Marine.Controllers.AlmacenController">
             <summary>
             para mantener los datos del almacen
@@ -215,18 +274,19 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="T:Marine.Controllers.HistarialMateriaPrimaController">
+        <member name="T:Marine.Controllers.HistorialMateriaPrimaController">
             <summary>
             para ver el historial de matera prima
             </summary>
         </member>
-        <member name="M:Marine.Controllers.HistarialMateriaPrimaController.#ctor(Marine.Data.ApplicationDbContext)">
+        <member name="M:Marine.Controllers.HistorialMateriaPrimaController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
             <summary>
             ctor
             </summary>
             <param name="context"></param>
+            <param name="mapper"></param>
         </member>
-        <member name="M:Marine.Controllers.HistarialMateriaPrimaController.Historial(Marine.DTOs.Periodo)">
+        <member name="M:Marine.Controllers.HistorialMateriaPrimaController.Historial(Marine.DTOs.Periodo)">
             <summary>
             para ver el esturial en un periodo predeterminado
             </summary>
@@ -605,6 +665,51 @@
         <member name="P:Marine.DTOs.GTipoDTO_out.act">
             <summary>
             si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.HistorialMateriaPrimaDTO_out">
+            <summary>
+            data que se entrega al hacer la consulta
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.HistorialMateriaPrimaDTO_out.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.HistorialMateriaPrimaDTO_out.Marisco">
+            <summary>
+            Marisco que ingreso
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.HistorialMateriaPrimaDTO_out.Cantidad">
+            <summary>
+            Cantidad que ha ingresado
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.HistorialMateriaPrimaDTO_out.Fecha">
+            <summary>
+            fecha en la que ingreso
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.HistorialMateriaPrimaDTO_out.NombreQuienRegistro">
+            <summary>
+            Nombre de quien registro
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.HistorialMateriaPrimaDTO_out.rutQuienRegistro">
+            <summary>
+            rut de quien registro
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.HistorialMateriaPrimaDTO_out.Ingreso">
+            <summary>
+            afirma si es un ingreso o egreso
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.HistorialMateriaPrimaDTO_out.#ctor">
+            <summary>
+            empty
             </summary>
         </member>
         <member name="T:Marine.DTOs.MateriaPrimaDTO">
