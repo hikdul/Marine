@@ -40,6 +40,63 @@ namespace Marine.DTOs
         #endregion
 
 
+        #region ctor
+
+        /// <summary>
+        /// empty
+        /// </summary>
+        public AlmacenDTO_in()
+        {
+
+        }
+
+        /// <summary>
+        /// complete
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="ty"></param>
+        /// <param name="c"></param>
+        /// <param name="e"></param>
+        /// <param name="cant"></param>
+        public AlmacenDTO_in(int m, int ty, int c, int e, double cant)
+        {
+            this.Marisco = m;
+            this.TipoProduccion = ty;
+            this.Calibre = c;
+            this.Empaquetado = e;
+            this.Cantidad = cant;
+        }
+        /// <summary>
+        /// para poder usar el contexto y crear un elemento particular
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="productoid"></param>
+        /// <param name="cant"></param>
+        /// <returns></returns>
+        public static async Task<AlmacenDTO_in> costructor(ApplicationDbContext context, int productoid, double cant = 0)
+        {
+            try
+            {
+                var prod = await context
+                    .Productos
+                    .Where(x => x.id == productoid)
+                    .FirstOrDefaultAsync();
+
+                if (prod == null || prod.id != productoid)
+                    return new();
+
+                return new(prod.Mariscoid, prod.TipoProduccionid, prod.Calibreid, prod.Empaquetadoid, cant);
+            }catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+                return new();
+            }
+        }
+
+
+        #endregion
+
+
         #region add
         /// <summary>
         /// para agregar valores

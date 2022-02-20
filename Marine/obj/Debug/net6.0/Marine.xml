@@ -364,6 +364,39 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Marine.Controllers.ProduccionController">
+            <summary>
+            controlador para produccion
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.ProduccionController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.ProduccionController.Post(Marine.DTOs.ProduccionDTO_in)">
+            <summary>
+            para crear una nueva produccion
+            </summary>
+            <param name="ins"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.ProduccionController.Get(System.Int32)">
+            <summary>
+            para obtener los detalles de una produccion especifica
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.ProduccionController.Get(Marine.DTOs.Periodo)">
+            <summary>
+            para obtener los detalles de toda lo produccion en un periodo especifico
+            </summary>
+            <param name="periodo"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Controllers.ProductoController">
             <summary>
             para manipular nuestros productos
@@ -509,9 +542,30 @@
             de lo que hay en este momento en almacen
             </summary>
         </member>
+        <member name="P:Marine.Data.ApplicationDbContext.Produccion">
+            <summary>
+            produccion realizada
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.MariscoProduccion">
+            <summary>
+            Mariscos usados en la produccion
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.ProductoProduccion">
+            <summary>
+            producto realizado en produccion
+            </summary>
+        </member>
         <member name="M:Marine.Data.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             para la gegeracion de datos por defecto
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:Marine.Data.ApplicationDbContext.BuildKey(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            para generar las claves compuestas en base de datos
             </summary>
             <param name="builder"></param>
         </member>
@@ -576,6 +630,30 @@
             Empaquetado
             </summary>
         </member>
+        <member name="M:Marine.DTOs.AlmacenDTO_in.#ctor">
+            <summary>
+            empty
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.AlmacenDTO_in.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Double)">
+            <summary>
+            complete
+            </summary>
+            <param name="m"></param>
+            <param name="ty"></param>
+            <param name="c"></param>
+            <param name="e"></param>
+            <param name="cant"></param>
+        </member>
+        <member name="M:Marine.DTOs.AlmacenDTO_in.costructor(Marine.Data.ApplicationDbContext,System.Int32,System.Double)">
+            <summary>
+            para poder usar el contexto y crear un elemento particular
+            </summary>
+            <param name="context"></param>
+            <param name="productoid"></param>
+            <param name="cant"></param>
+            <returns></returns>
+        </member>
         <member name="M:Marine.DTOs.AlmacenDTO_in.Add(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
             <summary>
             para agregar valores
@@ -626,6 +704,73 @@
             <summary>
             Empaquetado
             </summary>
+        </member>
+        <member name="T:Marine.DTOs.DatosProduccionProductos_out">
+            <summary>
+            detalles por porducto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.DatosProduccionProductos_out.TipoProduccion">
+            <summary>
+            tipo de produccion al que se refiere
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.DatosProduccionProductos_out.Calibre">
+            <summary>
+            calibre del Tipo de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.DatosProduccionProductos_out.Empaquetado">
+            <summary>
+            Empaquetado del producto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.DatosProduccionProductos_out.CantProduccida">
+            <summary>
+            Cantidad de productos producida
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.DatosProduccion_out.Marisco">
+            <summary>
+            marisco que se utilizo
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.DatosProduccion_out.CantUsada">
+            <summary>
+            Cantidad de materia prima utilizada
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.DatosProduccion_out.Productos">
+            <summary>
+            datos de productos realizados
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.Err">
+            <summary>
+            para enviar mis errores manuales
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.Err.Campo">
+            <summary>
+            campo donde ocurre el error
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.Err.Error">
+            <summary>
+            error o problema
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.Err.#ctor">
+            <summary>
+            empty
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.Err.#ctor(System.String,System.String)">
+            <summary>
+            constructor
+            </summary>
+            <param name="campo"></param>
+            <param name="error"></param>
         </member>
         <member name="T:Marine.DTOs.GTipoDTO_in">
             <summary>
@@ -815,6 +960,84 @@
             validacion
             </summary>
             <returns></returns>
+        </member>
+        <member name="P:Marine.DTOs.PivotProduccionDTO_in.Mariscoid">
+            <summary>
+            id del marisco en si
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.PivotProduccionDTO_in.CantidadUtilizada">
+            <summary>
+            Cantidad que se gastara en produccion
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.PivotProductosProduccionDTO_in">
+            <summary>
+            lista de elementos por subtipo
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.PivotProductosProduccionDTO_in.TipoProduccionid">
+            <summary>
+            tipo de produccion al que se refiere
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.PivotProductosProduccionDTO_in.Calibreid">
+            <summary>
+            calibre del Tipo de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.PivotProductosProduccionDTO_in.Empaquetadoid">
+            <summary>
+            Empaquetado del producto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.PivotProductosProduccionDTO_in.CantProduccida">
+            <summary>
+            Cantidad de productos producida
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.ProduccionDTO_in">
+            <summary>
+            para insertar los datos de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProduccionDTO_in.ProduccionIn">
+            <summary>
+            pivote mariscos producccion
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.ProduccionDTO_in.inValid(Marine.Data.ApplicationDbContext)">
+            <summary>
+            verifica si el valor o valores ingresados son validos
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.DTOs.ProduccionDTO_out">
+            <summary>
+            para enviar los datos de la produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProduccionDTO_out.Fecha">
+            <summary>
+            fecha en que fue realizado la produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProduccionDTO_out.SupervName">
+            <summary>
+            quien esta a cargo de la produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProduccionDTO_out.SupervEmail">
+            <summary>
+            email
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.ProduccionDTO_out.productos">
+            <summary>
+            detalles de lo producido
+            </summary>
         </member>
         <member name="T:Marine.DTOs.ProductoDTO_Details">
             <summary>
@@ -1125,6 +1348,109 @@
             cantidad del marisco
             </summary>
         </member>
+        <member name="T:Marine.Entitys.PMariscoProduccion">
+            <summary>
+            pivote de mariscos usados en produccion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PMariscoProduccion.Mariscoid">
+            <summary>
+            marisco utilizado
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PMariscoProduccion.Marisco">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PMariscoProduccion.Produccionid">
+            <summary>
+            produccion a la que pertenece
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PMariscoProduccion.Produccion">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PMariscoProduccion.CantidadUtilizada">
+            <summary>
+            cantidad utilizada
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.PProductoProduccion">
+            <summary>
+            productos usados en produccion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PProductoProduccion.Produccionid">
+            <summary>
+            produccion a la que pertenece
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PProductoProduccion.Produccion">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PProductoProduccion.Productoid">
+            <summary>
+            producto que se produjo
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PProductoProduccion.Producto">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.PProductoProduccion.CantidadProducida">
+            <summary>
+            cantidad producida
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.Produccion">
+            <summary>
+            produccion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Produccion.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Produccion.Fecha">
+            <summary>
+            fecha en que fue realizado la produccion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Produccion.Supervid">
+            <summary>
+            quien esta a cargo de la produccion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Produccion.Superv">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Produccion.MariscosProduccion">
+            <summary>
+            pivote mariscos producccion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Produccion.ProductoProduccion">
+            <summary>
+            Pivote productos en produccion
+            </summary>
+        </member>
+        <member name="M:Marine.Entitys.Produccion.Up(Marine.DTOs.ProduccionDTO_in,System.Int32,Marine.Data.ApplicationDbContext)">
+            <summary>
+            mapper
+            </summary>
+            <param name="dto"></param>
+            <param name="userid"></param>
+            <param name="context"></param>
+        </member>
         <member name="T:Marine.Entitys.Producto">
             <summary>
             es donde se definen los productos finales
@@ -1179,6 +1505,18 @@
             <summary>
             nav prop
             </summary>
+        </member>
+        <member name="M:Marine.Entitys.Producto.GetByParametersAsync(Marine.Data.ApplicationDbContext,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            para obtener el producto en base a sus parametros.
+            en caso de no existir crea uno
+            </summary>
+            <param name="context"></param>
+            <param name="Mid"></param>
+            <param name="TPid"></param>
+            <param name="Cid"></param>
+            <param name="Eid"></param>
+            <returns></returns>
         </member>
         <member name="T:Marine.Entitys.TipoProduccion">
             <summary>
@@ -1316,6 +1654,30 @@
             desde aca ocurren los mapeos
             </summary>
         </member>
+        <member name="M:Marine.Helpers.AutoMapperProfile.CompleteProduccion(Marine.Entitys.Produccion,Marine.DTOs.ProduccionDTO_out)">
+            <summary>
+            para generar el total de lo faltante en produccion
+            </summary>
+            <param name="ent"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Helpers.AutoMapperProfile.EmailSP(Marine.Entitys.Produccion,Marine.DTOs.ProduccionDTO_out)">
+            <summary>
+            obtiene el email
+            </summary>
+            <param name="ent"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Helpers.AutoMapperProfile.NameSP(Marine.Entitys.Produccion,Marine.DTOs.ProduccionDTO_out)">
+            <summary>
+            obtiene el nombre
+            </summary>
+            <param name="ent"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Helpers.Iid">
             <summary>
             para mantener aquellas clases que tienen este par de elementos1
@@ -1345,6 +1707,19 @@
             <summary>
             descripcion del elemento
             </summary>
+        </member>
+        <member name="T:Marine.Helpers.TypeBinder`1">
+            <summary>
+            para poder ingresar otro tipo de elemento diferente a los nativos
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Marine.Helpers.TypeBinder`1.BindModelAsync(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext)">
+            <summary>
+            bind
+            </summary>
+            <param name="bindingContext"></param>
+            <returns></returns>
         </member>
         <member name="T:Marine.Migrations.initial">
             <summary>
@@ -1443,6 +1818,23 @@
             <param name="migrationBuilder"></param>
         </member>
         <member name="M:Marine.Migrations.HSMateriaPrima.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            down
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="T:Marine.Migrations.produccion">
+            <summary>
+            para generar las tablas de produccion
+            </summary>
+        </member>
+        <member name="M:Marine.Migrations.produccion.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            up
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:Marine.Migrations.produccion.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <summary>
             down
             </summary>

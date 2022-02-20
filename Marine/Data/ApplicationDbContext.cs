@@ -79,20 +79,53 @@ namespace Marine.Data
         /// </summary>
         public DbSet<Almacen> Almacen { get; set; }
 
+
+        // ## == Produccion
+        // ## =====================================
+        /// <summary>
+        /// produccion realizada
+        /// </summary>
+        public DbSet<Produccion> Produccion{ get; set; }
+        /// <summary>
+        /// Mariscos usados en la produccion
+        /// </summary>
+        public DbSet<PMariscoProduccion> MariscoProduccion { get; set; }
+
+        /// <summary>
+        /// producto realizado en produccion
+        /// </summary>
+        public DbSet<PProductoProduccion> ProductoProduccion { get; set; }
+
         #endregion
 
 
-        #region Seed Data
         /// <summary>
         /// para la gegeracion de datos por defecto
         /// </summary>
         /// <param name="builder"></param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            RolesYSU(builder);
+            //RolesYSU(builder);
+
+            BuildKey(builder);
 
             base.OnModelCreating(builder);
         }
+
+        #region asignacion de llaves
+        /// <summary>
+        /// para generar las claves compuestas en base de datos
+        /// </summary>
+        /// <param name="builder"></param>
+        private void BuildKey(ModelBuilder builder)
+        {
+            builder.Entity<PMariscoProduccion>().HasKey(x => new {  x.Produccionid, x.Mariscoid});
+            builder.Entity<PProductoProduccion>().HasKey(x => new {x.Produccionid, x.Productoid });
+        }
+
+        #endregion
+
+        #region Seed Data
         /// <summary>
         /// para crear el listado de roles y un super usuario para iniciar la partida
         /// </summary>

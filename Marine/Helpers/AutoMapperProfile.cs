@@ -22,6 +22,7 @@ namespace Marine.Helpers
             MateriaPrimaMap();
             AlmacenMap();
             HsMateriaPrimaMap();
+            ProduccionMap();
         }
 
 
@@ -202,6 +203,82 @@ namespace Marine.Helpers
         private string RutEnHSMP(HistorialMateriaPrima ent, HistorialMateriaPrimaDTO_out dto)
         {
             return ent == null ? "" : ent.Usuario.rut;
+        }
+
+        #endregion
+
+        #region Produccion
+
+        private void ProduccionMap()
+        {
+            CreateMap<Produccion, ProduccionDTO_out>()
+                .ForMember(x => x.SupervEmail, opt => opt.MapFrom(EmailSP))
+                .ForMember(x => x.SupervName, opt => opt.MapFrom(NameSP))
+                .ForMember(x => x.productos, opt => opt.MapFrom(CompleteProduccion));
+        }
+
+        /// <summary>
+        /// para generar el total de lo faltante en produccion
+        /// </summary>
+        /// <param name="ent"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        private List<DatosProduccion_out> CompleteProduccion(Produccion ent, ProduccionDTO_out dto)
+        {
+            List<DatosProduccion_out> ret = new();
+
+            if (ent.MariscosProduccion == null)
+                return ret;
+
+            foreach (var item in ent.MariscosProduccion)
+            {
+                DatosProduccion_out band = new();
+
+                band.CantUsada = item.CantidadUtilizada;
+                band.Marisco = item.Marisco.Name;
+                band.Productos = new();
+                if(ent.ProductoProduccion != null)
+                foreach (var prod in ent.ProductoProduccion)
+                {
+                   if(prod.Producto.Mariscoid == item.Mariscoid)
+                    {
+                            band.Productos.Add(new()
+                            {
+                                Calibre = prod.Producto.Calibre.Name,
+                                Empaquetado = prod.Producto.Empaquetado.Name,
+                                TipoProduccion = prod.Producto.TipoProduccion.Name,
+                                CantProduccida = prod.CantidadProducida,
+                            });
+                    }
+                }
+                
+                ret.Add(band);
+
+            }
+
+            return ret;
+
+        }
+
+        /// <summary>
+        /// obtiene el email
+        /// </summary>
+        /// <param name="ent"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        private string EmailSP(Produccion ent, ProduccionDTO_out dto)
+        {
+            return ent.Superv.Email;
+        }
+        /// <summary>
+        /// obtiene el nombre
+        /// </summary>
+        /// <param name="ent"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        private string NameSP(Produccion ent, ProduccionDTO_out dto)
+        {
+            return ent.Superv.Nombre;
         }
 
         #endregion

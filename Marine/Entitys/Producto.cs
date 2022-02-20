@@ -1,5 +1,6 @@
 ﻿using Marine.Data;
 using Marine.Helpers;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace Marine.Entitys
@@ -59,8 +60,67 @@ namespace Marine.Entitys
         public Empaquetado Empaquetado { get; set; }
         #endregion
 
+        #region obtener por parametros
 
-     
+        /// <summary>
+        /// para obtener el producto en base a sus parametros.
+        /// en caso de no existir crea uno
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="Mid"></param>
+        /// <param name="TPid"></param>
+        /// <param name="Cid"></param>
+        /// <param name="Eid"></param>
+        /// <returns></returns>
+        public static async Task<Producto> GetByParametersAsync(ApplicationDbContext context, int Mid, int TPid, int Cid, int Eid = 0)
+        {
+            //Producto pp = new();
+            try
+            {
+
+                if(Eid == 0)
+                {
+                    var ppO = await context.Productos
+                   .Where(x => x.Mariscoid == Mid
+                   && x.TipoProduccionid == TPid
+                   && x.Calibreid == Cid)
+                   .FirstOrDefaultAsync();
+
+                    return ppO;
+                }
+
+
+              var pp = await context.Productos
+                    .Where(x => x.Mariscoid == Mid
+                    && x.TipoProduccionid == TPid
+                    && x.Calibreid == Cid
+                    && x.Empaquetadoid == Eid)
+                    .FirstOrDefaultAsync();
+
+                if(pp == null || pp.id < 1)
+                {
+                    pp = new()
+                    {
+                        Mariscoid = Mid,
+                        TipoProduccionid = TPid,
+                        Calibreid = Cid,
+                        Empaquetadoid = Eid
+                    };
+                    context.Add(pp);
+                    await context.SaveChangesAsync();
+                }
+                return pp;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+
+        #endregion
+
 
     }
 }
