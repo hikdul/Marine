@@ -23,8 +23,35 @@ namespace Marine.Helpers
             AlmacenMap();
             HsMateriaPrimaMap();
             ProduccionMap();
+            EquipoMap();
         }
 
+
+        #region equipo
+
+        private void EquipoMap()
+        {
+            CreateMap<GTipoDTO_in, Turnos>()
+                .ForMember(x => x.act, opt => opt.MapFrom(y => true));
+
+            CreateMap<GTipoDTO_out, Turnos>()
+                .ReverseMap();
+
+            CreateMap<CargosDTO_in, Cargos>()
+                                .ForMember(x => x.act, opt => opt.MapFrom(y => true));
+
+            CreateMap<CargosDTO_out, Cargos>()
+                .ReverseMap();
+
+
+
+
+
+        }
+
+
+
+        #endregion
 
         #region Marisco
 

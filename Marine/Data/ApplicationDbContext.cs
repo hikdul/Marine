@@ -96,6 +96,24 @@ namespace Marine.Data
         /// </summary>
         public DbSet<PProductoProduccion> ProductoProduccion { get; set; }
 
+
+        // ## == Planta
+        // ## =====================================
+        
+        /// <summary>
+        /// cargos
+        /// </summary>
+        public DbSet<Cargos> Cargos { get; set; }
+        /// <summary>
+        /// turnos
+        /// </summary>
+        public DbSet<Turnos> Turnos { get; set; }
+
+        /// <summary>
+        /// tabla de equipos
+        /// </summary>
+        public DbSet<Equipo> Equipos { get; set; }
+
         #endregion
 
 
@@ -121,6 +139,7 @@ namespace Marine.Data
         {
             builder.Entity<PMariscoProduccion>().HasKey(x => new {  x.Produccionid, x.Mariscoid});
             builder.Entity<PProductoProduccion>().HasKey(x => new {x.Produccionid, x.Productoid });
+            builder.Entity<Equipo>().HasKey(x => new { x.Turnoid, x.Cargoid });
         }
 
         #endregion

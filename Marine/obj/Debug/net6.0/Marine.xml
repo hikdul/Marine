@@ -227,6 +227,25 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Marine.Controllers.CargosController">
+            <summary>
+            para manipular mis cargos
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.CargosController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.CargosController.Post(Marine.DTOs.CargosDTO_in)">
+            <summary>
+            para agregar un nuevo elemento
+            </summary>
+            <param name="ins"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Controllers.EmpaquetadoController">
             <summary>
             para manipular la data de los empaquetados
@@ -557,6 +576,21 @@
             producto realizado en produccion
             </summary>
         </member>
+        <member name="P:Marine.Data.ApplicationDbContext.Cargos">
+            <summary>
+            cargos
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.Turnos">
+            <summary>
+            turnos
+            </summary>
+        </member>
+        <member name="P:Marine.Data.ApplicationDbContext.Equipos">
+            <summary>
+            tabla de equipos
+            </summary>
+        </member>
         <member name="M:Marine.Data.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             para la gegeracion de datos por defecto
@@ -705,6 +739,26 @@
             Empaquetado
             </summary>
         </member>
+        <member name="T:Marine.DTOs.CargosDTO_in">
+            <summary>
+            para generar nuevos cargos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CargosDTO_in.CantOperadoresNecesario">
+            <summary>
+            Cantidad Operadores Necesaria
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.CargosDTO_out">
+            <summary>
+            para mostrar los elementos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CargosDTO_out.CantOperadoresNecesario">
+            <summary>
+            Cantidad Operadores Necesaria
+            </summary>
+        </member>
         <member name="T:Marine.DTOs.DatosProduccionProductos_out">
             <summary>
             detalles por porducto
@@ -743,6 +797,11 @@
         <member name="P:Marine.DTOs.DatosProduccion_out.Productos">
             <summary>
             datos de productos realizados
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.EquipoDTO_in.cargos">
+            <summary>
+            cargos y cantidades cubiertas
             </summary>
         </member>
         <member name="T:Marine.DTOs.Err">
@@ -1212,6 +1271,36 @@
             si esta o no activo en base de datos
             </summary>
         </member>
+        <member name="T:Marine.Entitys.Cargos">
+            <summary>
+            Cargos necesarios para que la planta funcione bien
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Cargos.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Cargos.Name">
+            <summary>
+            nombre del cargo
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Cargos.Desc">
+            <summary>
+            descripcion del cargo
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Cargos.act">
+            <summary>
+            si el cargo esta activo o no
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Cargos.CantOperadoresNecesario">
+            <summary>
+            Cantidad Operadores Necesaria
+            </summary>
+        </member>
         <member name="T:Marine.Entitys.Empaquetado">
             <summary>
             definen el modo en que se guardan los productos por paquetes
@@ -1235,6 +1324,37 @@
         <member name="P:Marine.Entitys.Empaquetado.act">
             <summary>
             si esta o no activo en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.Entitys.Equipo">
+            <summary>
+            equipo de trabajo
+            esto se generan por turno
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Equipo.Turnoid">
+            <summary>
+            turno al que pertenece el equipo
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Equipo.Cargoid">
+            <summary>
+            cargo que se le asigna al equipo
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Equipo.Turno">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Equipo.Cargo">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Equipo.CantCubierta">
+            <summary>
+            cantidad cubierta
             </summary>
         </member>
         <member name="T:Marine.Entitys.HistorialMateriaPrima">
@@ -1544,6 +1664,31 @@
             si esta o no activo en base de datos
             </summary>
         </member>
+        <member name="T:Marine.Entitys.Turnos">
+            <summary>
+            Para mantener el nombre de los turnos necesarios
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Turnos.id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Turnos.act">
+            <summary>
+            active
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Turnos.Name">
+            <summary>
+            nombre del turno
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.Turnos.Desc">
+            <summary>
+            descripcion del turno
+            </summary>
+        </member>
         <member name="T:Marine.Entitys.Usuarios">
             <summary>
             datos de los usuarios del sistema
@@ -1835,6 +1980,23 @@
             <param name="migrationBuilder"></param>
         </member>
         <member name="M:Marine.Migrations.produccion.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            down
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="T:Marine.Migrations.equipo">
+            <summary>
+            para generar las tablas necesarias para almacenar los equipos
+            </summary>
+        </member>
+        <member name="M:Marine.Migrations.equipo.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            up
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:Marine.Migrations.equipo.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <summary>
             down
             </summary>
