@@ -3,9 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Marine.DTOs
 {
+    /// <summary>
+    /// para crear un nuevo equipo
+    /// </summary>
     public class EquipoDTO_in
     {
-
+        /// <summary>
+        /// turno que se va a crear
+        /// </summary>
         public GTipoDTO_in turno { get; set; }
         /// <summary>
         /// cargos y cantidades cubiertas
@@ -17,9 +22,18 @@ namespace Marine.DTOs
 
     public class __in
     {
+        /// <summary>
+        /// id del carga
+        /// </summary>
         public int Cargoid { get; set; }
-
+        /// <summary>
+        /// cantida de empleados en este cargo
+        /// </summary>
         public int CantCubierta { get; set; }
+        /// <summary>
+        /// Costo por operario
+        /// </summary>
+        public double CostoOperario { get; set; }
     }
 
 }

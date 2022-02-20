@@ -27,6 +27,10 @@
         /// cantidad cubierta
         /// </summary>
         public int CantCubierta { get; set; }
+        /// <summary>
+        /// Costo por operario
+        /// </summary>
+        public double CostoOperario { get; set; }
 
     }
 }
