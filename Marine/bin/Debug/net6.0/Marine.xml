@@ -876,6 +876,74 @@
             Costo por operario
             </summary>
         </member>
+        <member name="T:Marine.DTOs.EquipoDTO_out">
+            <summary>
+            para mostrar los datos de las equipos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.EquipoDTO_out.Turnoid">
+            <summary>
+            id del turno de equipo
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.EquipoDTO_out.NombreTurno">
+            <summary>
+            nombre del turno
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.EquipoDTO_out.DescTurno">
+            <summary>
+            descripcion del turno
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.EquipoDTO_out.Cargos">
+            <summary>
+            lista de cargos
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.EquipoDTO_out.#ctor">
+            <summary>
+            empty
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.EquipoDTO_out.Up(System.Collections.Generic.List{Marine.Entitys.Equipo},System.Collections.Generic.List{Marine.Entitys.Turnos})">
+            <summary>
+            para llenar los datos necesarios
+            </summary>
+            <param name="list"></param>
+            <param name="turnos"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.DTOs.CargoEquipo_out">
+            <summary>
+            los datos por equipo
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CargoEquipo_out.Name">
+            <summary>
+            nombre del cargo
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CargoEquipo_out.Desc">
+            <summary>
+            descripcion del cargo
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CargoEquipo_out.CantOperadoresNecesario">
+            <summary>
+            Cantidad Operadores Necesaria
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CargoEquipo_out.CantCubierta">
+            <summary>
+            cantidad cubierta
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CargoEquipo_out.CostoOperario">
+            <summary>
+            Costo por operario
+            </summary>
+        </member>
         <member name="T:Marine.DTOs.Err">
             <summary>
             para enviar mis errores manuales
