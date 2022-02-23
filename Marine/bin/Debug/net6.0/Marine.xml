@@ -340,6 +340,35 @@
             <param name="ins"></param>
             <returns></returns>
         </member>
+        <member name="M:Marine.Controllers.EquipoController.Get">
+            <summary>
+            para obtener una lista de los equipo activos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.EquipoController.Get(System.Int32)">
+            <summary>
+            para obtener los detalles de un equipo en particular,
+            por medio del id de turno
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.EquipoController.Edit(System.Int32,System.Collections.Generic.List{Marine.DTOs.__in})">
+            <summary>
+            Para editar un equipo
+            en este controlador se envia un correo indicardo que falta personal, si es cierto claro esta
+            </summary>
+            <param name="id"></param>
+            <param name="cargos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.EquipoController.Delete(System.Int32)">
+            <summary>
+            para desactivar el uso de un turno
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Controllers.HistorialMateriaPrimaController">
             <summary>
             para ver el historial de matera prima
@@ -905,6 +934,13 @@
             <summary>
             empty
             </summary>
+        </member>
+        <member name="M:Marine.DTOs.EquipoDTO_out.#ctor(System.Collections.Generic.List{Marine.Entitys.Equipo},Marine.Entitys.Turnos)">
+            <summary>
+            para un solo elemento
+            </summary>
+            <param name="list"></param>
+            <param name="turno"></param>
         </member>
         <member name="M:Marine.DTOs.EquipoDTO_out.Up(System.Collections.Generic.List{Marine.Entitys.Equipo},System.Collections.Generic.List{Marine.Entitys.Turnos})">
             <summary>

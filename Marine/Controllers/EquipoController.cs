@@ -13,7 +13,7 @@ namespace Marine.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class EquipoController : ControllerBase
+    public class EquipoController : BaseController
     {
 
         #region ctor
@@ -24,7 +24,7 @@ namespace Marine.Controllers
         /// </summary>
         /// <param name="context"></param>
         /// <param name="mapper"></param>
-        public EquipoController(ApplicationDbContext context, IMapper mapper)
+        public EquipoController(ApplicationDbContext context, IMapper mapper): base(context,mapper)
         {
             this.context = context;
             this.mapper = mapper;
@@ -146,6 +146,76 @@ namespace Marine.Controllers
 
         #endregion
 
+        #region editar
+        /// <summary>
+        /// Para editar un equipo
+        /// en este controlador se envia un correo indicardo que falta personal, si es cierto claro esta
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cargos"></param>
+        /// <returns></returns>
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Edit(int id, List<__in> cargos)
+        {
+
+            try
+            {
+
+
+                foreach (var item in cargos)
+                {
+
+                    var ent = await context
+                        .Equipos
+                        .Where(x => x.Turnoid == id && x.Cargoid == item.Cargoid)
+                        .FirstOrDefaultAsync();
+
+                    ent.CantCubierta = item.CantCubierta;
+                    ent.CostoOperario = item.CostoOperario;
+
+                    await context.SaveChangesAsync();
+
+
+                }
+
+
+
+                return NoContent();
+
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+                return BadRequest("upss, Algo Sali mal");
+            }
+        }
+
+
+        #endregion
+
+        #region delete
+        /// <summary>
+        /// para desactivar el uso de un turno
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            try
+            {
+                return await Delete<Turnos>(id);
+            }
+            catch(Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+                return BadRequest("No Es Posibre eliminar este elemeno");
+            }
+        }
+
+
+        #endregion
 
     }
 
