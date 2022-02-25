@@ -286,9 +286,15 @@
             <param name="context"></param>
             <param name="mapper"></param>
         </member>
-        <member name="M:Marine.Controllers.CostosMesController.Historial">
+        <member name="M:Marine.Controllers.CostosMesController.Historial(Marine.DTOs.Periodo)">
             <summary>
             Historial
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Controllers.CostosMesController.FechaPorProducto(System.Int32,Marine.DTOs.CalcularFechaDTO_in)">
+            <summary>
+            end point para calcular la fecha estimada de entrega por producto
             </summary>
             <returns></returns>
         </member>
@@ -837,6 +843,65 @@
             <summary>
             Empaquetado
             </summary>
+        </member>
+        <member name="T:Marine.DTOs.CalcularFechaDTO_in">
+            <summary>
+            datos necesario para predecir una fecha de entrega.
+            estos datos son solo por producto
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CalcularFechaDTO_in.Mariscoid">
+            <summary>
+            marisco
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CalcularFechaDTO_in.Calibreid">
+            <summary>
+            Calibreid
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CalcularFechaDTO_in.TipoProduccionid">
+            <summary>
+            Tipo produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CalcularFechaDTO_in.Equipoid">
+            <summary>
+            equipo que va a producir 
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CalcularFechaDTO_in.CantKg">
+            <summary>
+            cantidad en kilogramos
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.CalcularFechaDTO_out">
+            <summary>
+            entrega de calculo de individual
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CalcularFechaDTO_out.NumeroDias">
+            <summary>
+            Cantidad de dias de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CalcularFechaDTO_out.NumeroDiasRest">
+            <summary>
+            Numero de dias total
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CalcularFechaDTO_out.PosibleFechaEntrega">
+            <summary>
+            posible fecha en entrega
+            </summary>
+        </member>
+        <member name="M:Marine.DTOs.CalcularFechaDTO_out.#ctor(System.Int32,System.Int32,System.DateTime)">
+            <summary>
+            ctor
+            </summary>
+            <param name="numDias"></param>
+            <param name="NumerosDiasRest"></param>
+            <param name="date"></param>
         </member>
         <member name="T:Marine.DTOs.CargosDTO_in">
             <summary>
@@ -2454,6 +2519,43 @@
             down
             </summary>
             <param name="migrationBuilder"></param>
+        </member>
+        <member name="P:Marine.Services.CalculoDiarioCostosServices._services">
+            <summary>
+            variable global de IServiceProvier
+            </summary>
+        </member>
+        <member name="M:Marine.Services.CalculoDiarioCostosServices.#ctor(System.IServiceProvider)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="services"></param>
+            <param name="sender"></param>
+        </member>
+        <member name="M:Marine.Services.CalculoDiarioCostosServices.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            Inicia el Servicio
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Services.CalculoDiarioCostosServices.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            Detiene el Servicio
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Services.CalculoDiarioCostosServices.DoWork(System.Object)">
+            <summary>
+            donde ocurre la magias
+            </summary>
+            <param name="state"></param>
+        </member>
+        <member name="M:Marine.Services.CalculoDiarioCostosServices.Dispose">
+            <summary>
+            Detiene el Timer
+            </summary>
         </member>
     </members>
 </doc>

@@ -1,4 +1,5 @@
 using Marine.Data;
+using Marine.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,10 @@ var Config = builder.Services.BuildServiceProvider().GetService<IConfiguration>(
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+// Para Exponer mis servicios y dejarlos activos
+builder.Services.AddTransient<IHostedService, CalculoDiarioCostosServices>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
