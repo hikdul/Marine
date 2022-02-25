@@ -24,6 +24,7 @@ namespace Marine.Helpers
             HsMateriaPrimaMap();
             ProduccionMap();
             EquipoMap();
+            CostosMesMap();
         }
 
 
@@ -306,6 +307,38 @@ namespace Marine.Helpers
         private string NameSP(Produccion ent, ProduccionDTO_out dto)
         {
             return ent.Superv.Nombre;
+        }
+
+        #endregion
+
+        #region costos por mes
+
+        private void CostosMesMap()
+        {
+            CreateMap<CostosMes, CostosMesDTO_out>()
+                .ForMember(e => e.Calibre, o => o.MapFrom(CalibreEnCostos))
+                .ForMember(e => e.Marisco, o => o.MapFrom(MariscoEnCostos))
+                .ForMember(e => e.TipoProduccion, o => o.MapFrom(TpEnCostos))
+                .ForMember(e => e.Equipo, o => o.MapFrom(EquipoEnCostos));
+        }
+
+
+        private string EquipoEnCostos(CostosMes ent, CostosMesDTO_out dto)
+        {
+            return ent.Equipo.Turno.Name;
+        }
+
+        private string MariscoEnCostos(CostosMes ent, CostosMesDTO_out dto)
+        {
+            return ent.Marisco.Name;
+        }
+        private string TpEnCostos(CostosMes ent, CostosMesDTO_out dto)
+        {
+            return ent.TipoProduccion.Name;
+        }
+        private string CalibreEnCostos(CostosMes ent, CostosMesDTO_out dto)
+        {
+            return ent.Calibre.Name;
         }
 
         #endregion

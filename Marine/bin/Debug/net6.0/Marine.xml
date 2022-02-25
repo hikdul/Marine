@@ -274,6 +274,24 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Marine.Controllers.CostosMesController">
+            <summary>
+            para observar los costos y su historial
+            </summary>
+        </member>
+        <member name="M:Marine.Controllers.CostosMesController.#ctor(Marine.Data.ApplicationDbContext,AutoMapper.IMapper)">
+            <summary>
+            ctor
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Marine.Controllers.CostosMesController.Historial">
+            <summary>
+            Historial
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Controllers.EmpaquetadoController">
             <summary>
             para manipular la data de los empaquetados
@@ -667,6 +685,11 @@
             tabla de equipos
             </summary>
         </member>
+        <member name="P:Marine.Data.ApplicationDbContext.CostosMes">
+            <summary>
+            costos promedio por mes
+            </summary>
+        </member>
         <member name="M:Marine.Data.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             para la gegeracion de datos por defecto
@@ -833,6 +856,61 @@
         <member name="P:Marine.DTOs.CargosDTO_out.CantOperadoresNecesario">
             <summary>
             Cantidad Operadores Necesaria
+            </summary>
+        </member>
+        <member name="T:Marine.DTOs.CostosMesDTO_out">
+            <summary>
+            para mostrar elementos obtenidos y entregarlos fuera de la app
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.NumOperadores">
+            <summary>
+            numero de operadores promedio por mes
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.PorcentajeOperadoresCubiertos">
+            <summary>
+            porcentaje de operadores cubiertos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.CostoPromedioEquipoPorDia">
+            <summary>
+            costo promedio de productos por dia
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.KgProductoPromedioPorDia">
+            <summary>
+            Cantidad promedio de productos por dia
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.Year">
+            <summary>
+            año de estudio
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.Month">
+            <summary>
+            Mes del estudio
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.Equipo">
+            <summary>
+            equipo al que se le sacan los calculos
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.Marisco">
+            <summary>
+            Marisco
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.Calibre">
+            <summary>
+            Calibre
+            </summary>
+        </member>
+        <member name="P:Marine.DTOs.CostosMesDTO_out.TipoProduccion">
+            <summary>
+            Tipo de produccion
             </summary>
         </member>
         <member name="T:Marine.DTOs.DatosProduccionProductos_out">
@@ -1477,6 +1555,129 @@
             Cantidad Operadores Necesaria
             </summary>
         </member>
+        <member name="T:Marine.Entitys.CostosMes">
+            <summary>
+            para llevar el costo por mes en cada año. 
+            este calculo se ara por dia hasta completar mes
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.NumOperadores">
+            <summary>
+            numero de operadores promedio por mes
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.PorcentajeOperadoresCubiertos">
+            <summary>
+            porcentaje de operadores cubiertos
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.CostoPromedioEquipoPorDia">
+            <summary>
+            costo promedio de productos por dia
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.KgProductoPromedioPorDia">
+            <summary>
+            Cantidad promedio de productos por dia
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.Year">
+            <summary>
+            año de estudio
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.Month">
+            <summary>
+            Mes del estudio
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.Equipoid">
+            <summary>
+            equipo al que se le sacan los calculos
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.Equipo">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.Mariscoid">
+            <summary>
+            Marisco
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.Marisco">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.Calibreid">
+            <summary>
+            Calibre
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.Calibre">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.TipoProduccionid">
+            <summary>
+            Tipo de produccion
+            </summary>
+        </member>
+        <member name="P:Marine.Entitys.CostosMes.TipoProduccion">
+            <summary>
+            nav prop
+            </summary>
+        </member>
+        <member name="M:Marine.Entitys.CostosMes.#ctor">
+            <summary>
+            empty
+            </summary>
+        </member>
+        <member name="M:Marine.Entitys.CostosMes.CompleteDataBase(Marine.Data.ApplicationDbContext,System.DateTime)">
+            <summary>
+            es para que me genere los datos para todos los producton viables
+            </summary>
+            <param name="context"></param>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Entitys.CostosMes.Operadores(Marine.Data.ApplicationDbContext,System.Int32,System.DateTime,System.Int32,System.Int32,System.Int32,Marine.Entitys.CostosMes)">
+            <summary>
+            Para obtener los calculos de los operadores
+            </summary>
+            <param name="context"></param>
+            <param name="Equipoid"></param>
+            <param name="date"></param>
+            <param name="Marisco"></param>
+            <param name="calibre"></param>
+            <param name="tp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Entitys.CostosMes.productoPorDia(Marine.Data.ApplicationDbContext,System.DateTime,System.Int32,System.Int32,System.Int32,Marine.Entitys.CostosMes)">
+            <summary>
+            calcula la cantidad de productos promedio por dia de produccion
+            </summary>
+            <param name="context"></param>
+            <param name="date"></param>
+            <param name="Marisco"></param>
+            <param name="calibre"></param>
+            <param name="tp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Entitys.CostosMes.ObtenerEstudioActual(Marine.Data.ApplicationDbContext,System.DateTime,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            para buscar el elemento de estudio actual en base a la fecha
+            </summary>
+            <param name="context"></param>
+            <param name="date"></param>
+            <param name="Marisco"></param>
+            <param name="calibre"></param>
+            <param name="tp"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Entitys.Empaquetado">
             <summary>
             definen el modo en que se guardan los productos por paquetes
@@ -2004,6 +2205,18 @@
             <param name="dto"></param>
             <returns></returns>
         </member>
+        <member name="T:Marine.Helpers.DateGame">
+            <summary>
+            clase statico para tener varios valores en base a la fecha
+            </summary>
+        </member>
+        <member name="M:Marine.Helpers.DateGame.DaysInMont(System.DateTime)">
+            <summary>
+            para saber los dias de un mes dependiendo de su año
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
         <member name="T:Marine.Helpers.Iid">
             <summary>
             para mantener aquellas clases que tienen este par de elementos1
@@ -2017,6 +2230,31 @@
         <member name="P:Marine.Helpers.Iid.act">
             <summary>
             si esta activo o no en base de datos
+            </summary>
+        </member>
+        <member name="T:Marine.Helpers.ProductoCosto">
+            <summary>
+            clase auxiliar de costo
+            </summary>
+        </member>
+        <member name="P:Marine.Helpers.ProductoCosto.Productoid">
+            <summary>
+            producto
+            </summary>
+        </member>
+        <member name="P:Marine.Helpers.ProductoCosto.Mariscoid">
+            <summary>
+            marisco
+            </summary>
+        </member>
+        <member name="P:Marine.Helpers.ProductoCosto.Calibreid">
+            <summary>
+            calibre
+            </summary>
+        </member>
+        <member name="P:Marine.Helpers.ProductoCosto.tipoProduccionid">
+            <summary>
+            tipo de produccion
             </summary>
         </member>
         <member name="T:Marine.Helpers.ITipo">
@@ -2195,6 +2433,23 @@
             <param name="migrationBuilder"></param>
         </member>
         <member name="M:Marine.Migrations.equipo2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            down
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="T:Marine.Migrations.CostosMensuales">
+            <summary>
+            para generar la tabla
+            </summary>
+        </member>
+        <member name="M:Marine.Migrations.CostosMensuales.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            up
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:Marine.Migrations.CostosMensuales.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <summary>
             down
             </summary>

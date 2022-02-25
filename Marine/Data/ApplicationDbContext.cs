@@ -114,6 +114,16 @@ namespace Marine.Data
         /// </summary>
         public DbSet<Equipo> Equipos { get; set; }
 
+
+        // ## == Costos 
+        // ## =====================================
+
+        /// <summary>
+        /// costos promedio por mes
+        /// </summary>
+        public DbSet<CostosMes> CostosMes { get; set; }
+
+
         #endregion
 
 
@@ -140,6 +150,7 @@ namespace Marine.Data
             builder.Entity<PMariscoProduccion>().HasKey(x => new {  x.Produccionid, x.Mariscoid});
             builder.Entity<PProductoProduccion>().HasKey(x => new {x.Produccionid, x.Productoid });
             builder.Entity<Equipo>().HasKey(x => new { x.Turnoid, x.Cargoid });
+            builder.Entity<CostosMes>().HasKey(x => new { x.Equipoid, x.Mariscoid,x.TipoProduccionid,x.Calibreid });
         }
 
         #endregion
