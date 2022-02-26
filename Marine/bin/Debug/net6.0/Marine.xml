@@ -2520,6 +2520,11 @@
             </summary>
             <param name="migrationBuilder"></param>
         </member>
+        <member name="T:Marine.Services.CalculoDiarioCostosServices">
+            <summary>
+            para generar el calculo diario de cada elemento y almacenarlo en base de datos
+            </summary>
+        </member>
         <member name="P:Marine.Services.CalculoDiarioCostosServices._services">
             <summary>
             variable global de IServiceProvier
@@ -2555,6 +2560,123 @@
         <member name="M:Marine.Services.CalculoDiarioCostosServices.Dispose">
             <summary>
             Detiene el Timer
+            </summary>
+        </member>
+        <member name="T:Marine.Services.EmailSenderServices">
+            <summary>
+            servicio que envia correos electronicos
+            </summary>
+        </member>
+        <member name="M:Marine.Services.EmailSenderServices.#ctor(Microsoft.Extensions.Options.IOptions{Marine.Services.SmtpConfig})">
+            <summary>
+            contructor
+            </summary>
+            <param name="smtp"></param>
+        </member>
+        <member name="M:Marine.Services.EmailSenderServices.EmailSender(Marine.Services.MailData)">
+            <summary>
+            funcion para eviar el correo
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marine.Services.EmailSenderServices.EmailSender(System.String,System.String,System.String)">
+            <summary>
+            other sender
+            </summary>
+            <param name="Body"></param>
+            <param name="fromEmail"></param>
+            <param name="Subject"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.Services.IEmailSender">
+            <summary>
+            interface del servicio para enviar emails
+            </summary>
+        </member>
+        <member name="M:Marine.Services.IEmailSender.EmailSender(Marine.Services.MailData)">
+            <summary>
+            funcion que envia los correos
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marine.Services.MailData">
+            <summary>
+            para agregar la data que se enviara en el Email
+            </summary>
+        </member>
+        <member name="P:Marine.Services.MailData.Email">
+            <summary>
+            enmail de destino
+            </summary>
+        </member>
+        <member name="P:Marine.Services.MailData.Subject">
+            <summary>
+            subject 
+            </summary>
+        </member>
+        <member name="P:Marine.Services.MailData.Body">
+            <summary>
+            body o cuerppo
+            </summary>
+        </member>
+        <member name="M:Marine.Services.MailData.#ctor">
+            <summary>
+            default
+            </summary>
+        </member>
+        <member name="M:Marine.Services.MailData.#ctor(System.String,System.String,System.String)">
+            <summary>
+            complete
+            </summary>
+            <param name="Body"></param>
+            <param name="email"></param>
+            <param name="Subject"></param>
+        </member>
+        <member name="M:Marine.Services.MailData.#ctor(System.String,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            constructor con una lista de correos
+            </summary>
+            <param name="Body"></param>
+            <param name="emails"></param>
+            <param name="Subject"></param>
+        </member>
+        <member name="M:Marine.Services.MailData.listaCorreos(System.Collections.Generic.List{System.String})">
+            <summary>
+            para retornar la lista como un str
+            </summary>
+            <param name="correos"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Marine.Services.SmtpConfig.server">
+            <summary>
+            smtp.server
+            </summary>
+        </member>
+        <member name="P:Marine.Services.SmtpConfig.port">
+            <summary>
+            port for conec app
+            </summary>
+        </member>
+        <member name="P:Marine.Services.SmtpConfig.sendEmail">
+            <summary>
+            email from send
+            </summary>
+        </member>
+        <member name="P:Marine.Services.SmtpConfig.senderEmail">
+            <summary>
+            user or nick make
+            </summary>
+        </member>
+        <member name="P:Marine.Services.SmtpConfig.UserName">
+            <summary>
+            mail address
+            </summary>
+        </member>
+        <member name="P:Marine.Services.SmtpConfig.Password">
+            <summary>
+            pasdworn emial account
             </summary>
         </member>
     </members>

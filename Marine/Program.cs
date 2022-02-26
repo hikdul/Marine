@@ -36,6 +36,10 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
+//Implemento mis servicios
+builder.Services.AddSingleton<IEmailSender, EmailSenderServices>();
+
 //Auth scheme
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(O =>
 {

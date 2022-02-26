@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace Marine.Services
 {
+    /// <summary>
+    /// para generar el calculo diario de cada elemento y almacenarlo en base de datos
+    /// </summary>
     public class CalculoDiarioCostosServices : IHostedService, IDisposable
     {
         /// <summary>
