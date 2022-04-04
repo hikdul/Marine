@@ -133,7 +133,7 @@ namespace Marine.Data
         /// <param name="builder"></param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //RolesYSU(builder);
+            RolesYSU(builder);
 
             BuildKey(builder);
 

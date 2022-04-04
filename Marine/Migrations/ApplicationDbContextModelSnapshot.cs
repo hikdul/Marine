@@ -40,7 +40,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("Productoid");
 
-                    b.ToTable("Almacen");
+                    b.ToTable("Almacen", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.Calibre", b =>
@@ -65,7 +65,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Calibres");
+                    b.ToTable("Calibres", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.Cargos", b =>
@@ -94,7 +94,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Cargos");
+                    b.ToTable("Cargos", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.CostosMes", b =>
@@ -145,7 +145,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("EquipoTurnoid", "EquipoCargoid");
 
-                    b.ToTable("CostosMes");
+                    b.ToTable("CostosMes", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.Empaquetado", b =>
@@ -170,7 +170,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Empaquetados");
+                    b.ToTable("Empaquetados", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.Equipo", b =>
@@ -191,7 +191,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("Cargoid");
 
-                    b.ToTable("Equipos");
+                    b.ToTable("Equipos", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.HistorialMateriaPrima", b =>
@@ -223,7 +223,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("Usuarioid");
 
-                    b.ToTable("HistorialMateriaPrima");
+                    b.ToTable("HistorialMateriaPrima", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.Marisco", b =>
@@ -248,7 +248,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Mariscos");
+                    b.ToTable("Mariscos", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.MateriaPrima", b =>
@@ -269,7 +269,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("Mariscoid");
 
-                    b.ToTable("MateriasPrimas");
+                    b.ToTable("MateriasPrimas", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.PMariscoProduccion", b =>
@@ -287,7 +287,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("Mariscoid");
 
-                    b.ToTable("MariscoProduccion");
+                    b.ToTable("MariscoProduccion", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.PProductoProduccion", b =>
@@ -305,7 +305,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("Productoid");
 
-                    b.ToTable("ProductoProduccion");
+                    b.ToTable("ProductoProduccion", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.Produccion", b =>
@@ -326,7 +326,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("Supervid");
 
-                    b.ToTable("Produccion");
+                    b.ToTable("Produccion", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.Producto", b =>
@@ -362,7 +362,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("TipoProduccionid");
 
-                    b.ToTable("Productos");
+                    b.ToTable("Productos", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.TipoProduccion", b =>
@@ -387,7 +387,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("TiposProduccion");
+                    b.ToTable("TiposProduccion", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.Turnos", b =>
@@ -413,7 +413,7 @@ namespace Marine.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Turnos");
+                    b.ToTable("Turnos", (string)null);
                 });
 
             modelBuilder.Entity("Marine.Entitys.Usuarios", b =>
@@ -454,7 +454,7 @@ namespace Marine.Migrations
 
                     b.HasIndex("Userid");
 
-                    b.ToTable("AspNetUsuario");
+                    b.ToTable("AspNetUsuario", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

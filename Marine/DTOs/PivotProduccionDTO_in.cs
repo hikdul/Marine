@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Marine.DTOs
 {
-    public class PivotProduccionDTO_in
+    public class PivotProduccionDTO_in 
     {
         /// <summary>
         /// id del marisco en si
